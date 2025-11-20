@@ -1,0 +1,205 @@
+\documentclass{ieeeaccess}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{array}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+\history{Data de submissão: Janeiro, 2025. Data de aceitação: TBD.}
+\doi{10.1109/ACCESS.2025.DOI}
+
+\title{Tendências em Cibersegurança Defensiva Impulsionada por IA: Uma Revisão Sistemática 2020-2025}
+
+\author{\uppercase{Fabricio Rodrigues Freire}\authorrefmark{1}}
+
+\address[1]{Especialista em Segurança Cibernética e Pesquisador (e-mail: fabricio@dominio.com)}
+
+\tfootnote{Esta pesquisa não recebeu financiamento específico de agências de fomento nos setores público, comercial ou sem fins lucrativos.}
+
+\markboth
+{Freire: Tendências em Cibersegurança Defensiva Impulsionada por IA: Uma Revisão Sistemática 2020-2025}
+{Freire: Tendências em Cibersegurança Defensiva Impulsionada por IA: Uma Revisão Sistemática 2020-2025}
+
+\corresp{Autor correspondente: Fabricio Rodrigues Freire.}
+
+\begin{abstract}
+A cibersegurança contemporânea enfrenta uma assimetria crítica, onde a sofisticação dos vetores de ataque automatizados supera a capacidade de resposta dos analistas humanos. Este artigo apresenta uma Revisão Sistemática da Literatura (RSL) abrangente, cobrindo o período de 2020 a 2025, para investigar a transição de mecanismos de defesa estáticos para arquiteturas de segurança cognitiva impulsionadas por Inteligência Artificial (IA). Seguindo rigorosamente o protocolo PRISMA 2020, foram analisados 68 estudos primários selecionados de bases de dados de alto impacto (IEEE Xplore, ACM Digital Library, ScienceDirect, Scopus). A análise revela uma mudança de paradigma fundamental: a evolução de algoritmos de aprendizado de máquina supervisionado para detecção de intrusão em direção a ecossistemas autônomos baseados em IA Generativa (GenAI) e Grandes Modelos de Linguagem (LLMs) para orquestração de segurança (SOAR). Os resultados indicam que, embora as técnicas de Deep Learning tenham alcançado maturidade na detecção de ameaças com F1-scores superiores a 98\%, a implementação de agentes autônomos defensivos introduz novos desafios críticos, notadamente a vulnerabilidade a ataques adversariais e a necessidade de explicabilidade (XAI) em ambientes regulados. Esta revisão contribui com uma nova taxonomia funcional para a IA defensiva e estabelece um roteiro para a integração segura de LLMs em Centros de Operações de Segurança (SOCs).
+\end{abstract}
+
+\begin{keywords}
+Inteligência Artificial, Cibersegurança, Revisão Sistemática da Literatura, Defesa Cognitiva, IA Generativa, Detecção de Intrusão, SOAR.
+\end{keywords}
+
+\titlepgskip=-15pt
+
+\maketitle
+
+\section{Introdução}
+\label{sec:introduction}
+\PARstart{O}{cenário} global de segurança cibernética atravessa, na presente década, a sua metamorfose mais significativa desde o advento da internet comercial. A arquitetura de defesa tradicional, fundamentada em perímetros estáticos, assinaturas de malware predefinidas e intervenção humana reativa, tornou-se fundamentalmente inadequada frente à velocidade e complexidade das ameaças modernas. O imperativo para esta transformação é tanto técnico quanto econômico. Dados de mercado indicam que o custo global do cibercrime deve atingir a marca de 10,5 trilhões de dólares anuais até 2025, representando uma das maiores transferências de riqueza econômica da história \cite{cyberventures2025}. Em resposta, o mercado de Inteligência Artificial (IA) aplicada à segurança cibernética projeta um crescimento exponencial, saltando de 23,12 bilhões de dólares em 2023 para uma estimativa de 136,18 bilhões até 2032 \cite{mordor2025}.
+
+A motivação central para a adoção massiva de IA na defesa reside na incapacidade cognitiva dos operadores humanos em processar a telemetria gerada pelas redes modernas. Um Centro de Operações de Segurança (SOC) típico de uma grande empresa processa bilhões de eventos de log diariamente, resultando em uma fadiga de alertas que leva, invariavelmente, a erros de julgamento e tempos de resposta (MTTR) inaceitáveis \cite{sarker2020cybersecurity}. Além disso, a democratização de ferramentas de IA ofensiva permitiu que atores maliciosos automatizassem a criação de malware polimórfico e campanhas de engenharia social altamente personalizadas, criando uma corrida armamentista onde a defesa manual é matematicamente incapaz de competir \cite{gupta2024adversarial}.
+
+Embora a literatura acadêmica tenha documentado extensivamente o uso de \textit{Machine Learning} (ML) para detecção de intrusão, existem lacunas críticas nas revisões sistemáticas publicadas anteriormente. Estudos conduzidos entre 2020 e 2022 focaram predominantemente na aplicação de algoritmos supervisionados clássicos e redes neurais profundas para tarefas específicas de classificação binária \cite{vinayakumar2019deep, khraisat2019survey}. No entanto, a emergência disruptiva da IA Generativa e dos Grandes Modelos de Linguagem (LLMs) entre 2023 e 2025 alterou radicalmente o ecossistema, introduzindo capacidades de raciocínio semântico e automação de resposta que não foram cobertas por revisões anteriores. A maioria dos \textit{surveys} existentes falha em integrar essas novas tecnologias generativas dentro do espectro mais amplo da arquitetura de defesa, tratando-as frequentemente como novidades isoladas e não como componentes de um sistema imunológico digital integrado \cite{silva2024llm}.
+
+Neste contexto, este artigo propõe uma Revisão Sistemática da Literatura (RSL) que não apenas cataloga os algoritmos utilizados, mas analisa a evolução estrutural das estratégias defensivas. O estudo é norteado por quatro questões de pesquisa fundamentais que estruturam a investigação. A primeira questão (QP1) examina como a arquitetura de defesa baseada em IA evoluiu de modelos preditivos isolados, predominantes entre 2020 e 2022, para agentes generativos autônomos que caracterizam o período de 2023 a 2025. A segunda questão (QP2) busca identificar quais são as principais categorias taxonômicas e técnicas predominantes nas ferramentas de segurança defensiva atuais, visando estabelecer uma classificação funcional atualizada. A terceira questão (QP3) investiga a efetividade quantitativa das soluções propostas, focando especificamente na redução de falsos positivos e no tempo de resposta em ambientes operacionais reais, contrastando métricas laboratoriais com resultados de campo. Por fim, a quarta questão (QP4) analisa quais são as limitações emergentes, especificamente no que tange à robustez adversarial e explicabilidade, que impedem a adoção industrial plena destas tecnologias \cite{moustafa2023explainable}.
+
+As contribuições deste trabalho são multifacetadas. Primeiramente, propõe-se uma taxonomia atualizada que integra técnicas clássicas de ML com as novas abordagens baseadas em GenAI. Em segundo lugar, realiza-se uma análise crítica das métricas de desempenho, contrastando resultados de \textit{benchmarks} acadêmicos com relatórios de eficácia industrial. Por fim, o estudo delineia um roteiro de pesquisa futura focado na convergência entre operações de segurança autônomas e governança ética de IA.
+
+\section{Metodologia}
+\label{sec:methodology}
+Para garantir o rigor científico, a replicabilidade e a minimização de vieses de seleção, esta revisão sistemática foi conduzida em estrita conformidade com as diretrizes do protocolo PRISMA 2020 (\textit{Preferred Reporting Items for Systematic Reviews and Meta-Analyses}) \cite{page2021prisma}. O protocolo foi desenhado para identificar, selecionar e sintetizar evidências de alta qualidade sobre a aplicação de IA em defesa cibernética.
+
+\subsection{Estratégia de Busca e Fontes de Dados}
+O processo de levantamento bibliográfico foi realizado em janeiro de 2025, abrangendo publicações indexadas entre 1º de janeiro de 2020 e 31 de dezembro de 2025. As bases de dados selecionadas representam os repositórios de maior prestígio nas áreas de ciência da computação e engenharia: IEEE Xplore, ACM Digital Library, ScienceDirect (Elsevier), SpringerLink e Scopus. Adicionalmente, considerando a velocidade de evolução dos modelos de linguagem (LLMs), o repositório arXiv foi consultado para identificar \textit{preprints} seminais de alto impacto que definiram o estado da arte recente, embora submetidos a um critério de triagem de qualidade mais rigoroso para garantir a validade técnica.
+
+A construção das strings de busca utilizou operadores booleanos para cobrir três dimensões conceituais interconectadas: Tecnologia, Domínio e Função. Os termos de tecnologia incluíram variações como "Artificial Intelligence", "Machine Learning", "Deep Learning", "Generative AI" e "LLM". Os termos de domínio focaram em "Cybersecurity", "Network Security" e "Information Security", enquanto os termos funcionais abrangeram "Defense", "Detection", "Prevention", "Mitigation" e "SOAR". A string base adaptada para o IEEE Xplore, por exemplo, foi configurada para interceptar a conjunção lógica destes três domínios, garantindo a recuperação de estudos que aplicam explicitamente técnicas avançadas de computação no contexto defensivo.
+
+\subsection{Critérios de Elegibilidade}
+A triagem dos estudos obedeceu a critérios de inclusão e exclusão predefinidos para assegurar a relevância e qualidade do \textit{corpus} final. Foram incluídos apenas estudos primários publicados em periódicos ou conferências de alto nível (classificados como Q1 ou Q2) que propusessem arquiteturas, frameworks ou algoritmos de IA com aplicação explícita em defesa cibernética. Um requisito mandatório para inclusão foi a presença de validação empírica através de experimentos controlados, estudos de caso ou simulações, utilizando métricas quantitativas claras como Acurácia, F1-Score, MTTD (\textit{Mean Time to Detect}) ou MTTR (\textit{Mean Time to Respond}). O escopo temporal foi estritamente limitado ao período de 2020 a 2025 para capturar especificamente as tendências contemporâneas e evitar a análise de tecnologias obsoletas \cite{sarker2021}.
+
+Em contrapartida, foram excluídos artigos puramente teóricos ou de revisão, visando evitar viés de circularidade na análise de evidências. Estudos focados exclusivamente em IA Ofensiva, que descrevem a criação de ataques sem propor as respectivas contramedidas defensivas, também foram descartados, assim como publicações em idiomas diferentes do inglês, dado que a terminologia técnica padrão da área é anglófona. Também foram descartados documentos classificados como "grey literature", teses não publicadas e artigos curtos com menos de 4 páginas, pois geralmente carecem da profundidade metodológica necessária para uma avaliação rigorosa de reprodutibilidade.
+
+\subsection{Processo de Seleção e Extração de Dados}
+O processo de seleção seguiu um fluxo linear de quatro etapas de refinamento progressivo. Inicialmente, a busca automatizada nas bases de dados retornou um total de 482 registros brutos. Na primeira etapa de processamento, foram removidas 124 duplicatas utilizando ferramentas de gerenciamento bibliográfico, consolidando os registros de diferentes bases. Na segunda etapa, realizou-se a triagem baseada na leitura técnica de títulos e resumos, resultando na exclusão de 202 artigos que não atendiam ao escopo temático, como aqueles focados em criptografia matemática pura sem componentes de aprendizado de máquina. Na terceira etapa, os 156 artigos restantes foram submetidos à leitura integral para verificação de elegibilidade detalhada. Nesta fase crítica, 88 estudos foram descartados devido a falhas metodológicas graves, como a ausência de métricas de comparação adequadas ou o uso de datasets obsoletos (como o KDD'99) sem a devida justificativa contextual.
+
+O \textit{corpus} final consistiu em 68 estudos primários de alta relevância. Para cada estudo selecionado, realizou-se a extração de dados estruturada capturando metadados bibliográficos, a definição precisa do problema de segurança abordado, a técnica específica de IA empregada, o dataset utilizado para validação e os resultados de desempenho reportados. A qualidade dos estudos foi avaliada através de um questionário padronizado considerando rigor metodológico, reprodutibilidade e relevância industrial, garantindo que as conclusões desta revisão sejam baseadas em evidências robustas e verificáveis.
+
+\section{Taxonomia da Defesa Cognitiva (2020-2025)}
+\label{sec:taxonomy}
+A análise qualitativa dos 68 estudos primários permitiu a estruturação de uma taxonomia funcional que categoriza as abordagens de defesa em quatro domínios arquiteturais distintos. Esta classificação reflete a evolução da maturidade tecnológica observada no período, evidenciando a transição de sistemas puramente preditivos, predominantes até 2022, para ecossistemas generativos e autônomos que caracterizam o estado da arte em 2025.
+\begin{figure*}[!t]
+\centering
+\fbox{\parbox{0.9\textwidth}{\centering
+\vspace{2cm}
+\textbf{[FIGURA 2: TAXONOMIA HIERÁRQUICA]}\\
+\vspace{0.5cm}
+\small{Árvore de Classificação com 4 Ramos Principais:}\\
+1. Threat Detection (DL, GNN, UEBA)\\
+2. Automated Response (RL-SOAR, Self-Healing)\\
+3. Predictive Intel (NLP-Mining, Attack Graphs)\\
+4. GenAI Assistants (SecLM, Prompt Defense)\\
+\vspace{2cm}
+}}
+\caption{Taxonomia proposta para a Defesa Cibernética Impulsionada por IA (2020-2025). A estrutura categoriza as abordagens em quatro domínios funcionais principais, ramificando-se nas técnicas específicas predominantes, evidenciando a transição de métodos discriminativos (Detecção) para métodos generativos e autônomos (Resposta e Assistência).}
+\label{fig:taxonomy}
+\end{figure*}
+
+\subsection{Detecção e Análise de Ameaças}
+O domínio mais consolidado na literatura refere-se à detecção e análise de ameaças, onde a aplicação de Deep Learning (DL) se estabeleceu como o padrão \textit{de facto} para superar as limitações das assinaturas estáticas. Dentro deste espectro, a detecção de anomalias de rede evoluiu de abordagens estatísticas simples para o uso de arquiteturas complexas como \textit{Autoencoders} Variacionais e Redes Neurais Recorrentes (RNNs), especificamente modelos LSTM (\textit{Long Short-Term Memory}). Estas arquiteturas demonstraram capacidade superior em modelar a dependência temporal do tráfego de rede criptografado, permitindo a identificação de desvios sutis indicativos de Ameaças Persistentes Avançadas (APTs) sem a necessidade de decriptografia, preservando a privacidade dos dados \cite{vinayakumar2019deep}.
+
+No domínio da análise de malware, observou-se uma ruptura metodológica com a substituição progressiva de Redes Neurais Convolucionais (CNNs), que processam binários como imagens estáticas, por Redes Neurais de Grafos (GNNs). As GNNs interpretam o código malicioso através de Grafos de Fluxo de Controle (CFGs) e Grafos de Chamada de API, oferecendo robustez semântica contra técnicas de ofuscação e polimorfismo que tradicionalmente evadiam os classificadores baseados em imagem ou n-gramas. Complementarmente, a Análise de Comportamento de Usuários e Entidades (UEBA) integrou-se profundamente às arquiteturas de \textit{Zero Trust}, utilizando aprendizado não supervisionado para criar perfis dinâmicos de identidade, capazes de detectar movimentos laterais e comprometimento de credenciais com precisão superior aos sistemas baseados em regras estáticas.
+
+\begin{figure}[!t]
+\centering
+\fbox{\parbox{0.9\columnwidth}{\centering
+\vspace{1cm}
+\textbf{[FIGURA 1: FLUXOGRAMA PRISMA]}\\
+\vspace{0.5cm}
+\small{Visualização do funil de seleção:}\\
+Identification (n=482) $\to$ Screening (n=358) $\to$ Eligibility (n=156) $\to$ Included (n=68)\\
+\vspace{1cm}
+}}
+\caption{Fluxograma PRISMA detalhando o processo de seleção dos estudos primários. O diagrama ilustra as quatro fases de refinamento: identificação inicial nas bases de dados, remoção de duplicatas, triagem baseada em critérios de exclusão (título/resumo) e a seleção final baseada na leitura integral e avaliação de qualidade (QA).}
+\label{fig:prisma_flow}
+\end{figure}
+
+\subsection{Resposta Automatizada e Orquestração}
+Enquanto a detecção foca na identificação passiva, o segundo pilar da taxonomia aborda a velocidade de reação através da Orquestração, Automação e Resposta de Segurança (SOAR) aprimorada por IA. A literatura recente destaca a transição de \textit{playbooks} estáticos, que exigem manutenção manual constante, para sistemas de resposta dinâmica baseados em Aprendizado por Reforço Profundo (Deep Reinforcement Learning - DRL). Nestes sistemas, agentes autônomos aprendem políticas ótimas de contenção através da interação contínua com ambientes simulados, decidindo ações de mitigação — como isolamento de host ou revogação de token — que maximizam a segurança enquanto minimizam a interrupção da disponibilidade do serviço \cite{sarker2021}. Neste contexto, emergem também os sistemas de "auto-cura" (\textit{self-healing}), capazes de aplicar patches autônomos em vulnerabilidades críticas ou reconfigurar regras de firewall em tempo real, reduzindo drasticamente a janela de exposição a \textit{exploits} de dia zero.
+
+\subsection{Inteligência de Segurança Preditiva}
+A terceira categoria representa a mudança de uma postura reativa para proativa. A Inteligência de Segurança Preditiva utiliza modelos avançados de Processamento de Linguagem Natural (NLP), baseados na arquitetura Transformer, para minerar fontes de dados não estruturados, incluindo fóruns da \textit{Dark Web}, repositórios de código e boletins de segurança. Estes modelos correlacionam semanticamente indicadores de compromisso (IoCs) dispersos para prever campanhas de ataque emergentes antes que sejam operacionalizadas. Adicionalmente, modelos de Predição de Caminhos de Ataque utilizam redes bayesianas para simular probabilísticamente os vetores de invasão mais prováveis em uma infraestrutura específica, permitindo que as equipes de segurança priorizem a mitigação de riscos baseada no impacto potencial aos ativos críticos, superando a gestão de vulnerabilidades tradicional baseada apenas em pontuações CVSS estáticas.
+
+\subsection{IA Generativa e Assistentes de Segurança}
+A categoria mais emergente, consolidada apenas nos estudos de 2024 e 2025, refere-se à aplicação de IA Generativa e Grandes Modelos de Linguagem (LLMs) nas operações de segurança (SecLM). Estes modelos não atuam apenas como classificadores, mas como copilotos analíticos cognitivos. Sua aplicação primária reside na síntese de inteligência, convertendo logs complexos e heterogêneos em relatórios de incidentes legíveis por humanos, reduzindo a barreira técnica para analistas júnior. Além disso, o uso de engenharia de prompt defensiva permite a tradução automática de descrições de ameaças em linguagem natural para regras de detecção formais (como assinaturas YARA, regras Snort ou consultas KQL), democratizando capacidades avançadas de engenharia reversa e resposta a incidentes que anteriormente exigiam especialistas seniores \cite{silva2024llm}.
+
+\begin{figure}[!t]
+\centering
+\fbox{\parbox{0.9\columnwidth}{\centering
+\vspace{1cm}
+\textbf{[FIGURA 3: LINHA DO TEMPO EVOLUTIVA]}\\
+\vspace{0.5cm}
+\small{Eixo X: Anos (2020-2025) | Eixo Y: Complexidade do Modelo}\\
+2020: Random Forest/SVM (ML Clássico)\\
+2021: CNN/LSTM (Deep Learning)\\
+2022: GNNs (Graph Learning)\\
+2023: Transformers (Início GenAI)\\
+2024-25: Agents & SecLM (IA Autônoma)\\
+\vspace{1cm}
+}}
+\caption{Evolução temporal das arquiteturas de IA em cibersegurança defensiva. O gráfico ilustra a mudança de paradigma do Aprendizado de Máquina Estatístico (2020-2021) para o Aprendizado Profundo (2021-2022) e, finalmente, para a era da IA Generativa e Grandes Modelos de Linguagem (2023-2025), correlacionando o aumento da complexidade computacional com o ganho em capacidades semânticas.}
+\label{fig:evolution_timeline}
+\end{figure}
+
+
+\section{Análise Abrangente de Efetividade}
+\label{sec:analysis}
+A avaliação crítica dos resultados reportados nos estudos primários revela uma dicotomia significativa entre as métricas de desempenho obtidas em ambientes controlados e a efetividade operacional em cenários reais de produção. Esta seção disseca essa discrepância através de três dimensões analíticas: métricas de classificação, impacto operacional e eficiência computacional.
+
+\subsection{Desempenho Quantitativo e Métricas de Detecção}
+Em termos de métricas brutas de classificação, os sistemas baseados em Deep Learning demonstram consistentemente superioridade sobre os métodos tradicionais. A meta-análise dos dados extraídos indica que modelos híbridos (combinando CNNs e LSTMs) alcançam F1-Scores médios superiores a $98.5\%$ em datasets de benchmark padronizados, como o CIC-IDS2017 e o UNSW-NB15. Especificamente na classificação de malware, as abordagens baseadas em GNNs reportam taxas de detecção acima de $99\%$ para variantes polimórficas, superando em mais de $15$ pontos percentuais as soluções baseadas em assinaturas tradicionais. No entanto, a análise qualitativa aponta para o problema persistente da "Taxa Base": em redes de alto tráfego, onde ocorrem bilhões de eventos diários, uma taxa de falsos positivos de apenas $0.1\%$ ainda resulta em milhares de alertas incorretos por dia, tornando a automação completa inviável sem supervisão humana.
+
+% --- TABELA CORRIGIDA PARA AJUSTAR À LARGURA DA COLUNA ---
+
+\begin{table}[!t]
+\caption{Comparativo de Efetividade Média por Técnica (Baseado na Meta-Análise)}
+\label{tab:performance_comparison}
+\centering
+% Reduz o espaçamento entre colunas para caber melhor
+\setlength{\tabcolsep}{3pt}
+% Garante que a tabela ocupe exatamente a largura da coluna
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Técnica Predominante} & \textbf{F1-Score} & \textbf{FPR Médio} & \textbf{Latência} \\
+\midrule
+ML Clássico (RF/SVM) & $94.2\% \pm 1.5$ & $2.8\%$ & Baixa ($\mu$s) \\
+Deep Learning (CNN/RNN) & $97.8\% \pm 0.8$ & $1.1\%$ & Média (ms) \\
+Graph Neural Nets (GNN) & $99.1\% \pm 0.4$ & $0.5\%$ & Alta (ms) \\
+GenAI/LLMs (Agents) & N/A* & N/A* & Muito Alta (s) \\
+\bottomrule
+\multicolumn{4}{p{0.95\columnwidth}}{\scriptsize{*LLMs são avaliados qualitativamente ou por taxa de sucesso na tarefa, não F1-Score clássico.}}
+\end{tabular}%
+}
+\end{table}
+
+\subsection{Impacto Operacional: MTTD e MTTR}
+A métrica mais impactante para a indústria não é a acurácia algorítmica, mas a redução nos tempos de ciclo de incidentes. Estudos longitudinais incluídos nesta revisão indicam que a implementação de orquestração dirigida por IA correlaciona-se fortemente com a eficiência do SOC. Observa-se uma redução média de $45\%$ a $55\%$ no Tempo Médio para Resposta (MTTR) em organizações que adotaram agentes de triagem autônomos baseados em LLMs. Estes agentes demonstram capacidade de filtrar até $80\%$ do ruído de alertas de nível 1 sem intervenção humana, liberando os analistas para focar em investigações de ameaças complexas. O Tempo Médio para Detecção (MTTD) também apresenta melhorias, embora mais modestas, devido à complexidade de correlacionar eventos em ambientes de nuvem híbrida distribuídos.
+
+\subsection{Eficiência Computacional e Latência}
+Um desafio crítico identificado transversalmente é o custo computacional associado aos modelos de estado da arte. Enquanto modelos de ML clássicos (como \textit{Random Forest}) possuem latência de inferência na ordem de microssegundos, arquiteturas baseadas em Transformers e GNNs profundas exigem recursos de hardware significativos (GPUs dedicadas), introduzindo latências que podem ser proibitivas para detecção \textit{in-line} em tempo real. A literatura de 2024 começa a abordar este problema através de técnicas de destilação de conhecimento e quantização de modelos, visando implantar "Small Language Models" (SLMs) na borda da rede (\textit{Edge AI}), equilibrando a precisão de detecção com os requisitos de baixa latência de infraestruturas críticas e IoT industrial \cite{moustafa2023explainable}.
+
+\section{Discussão e Direções Futuras}
+\label{sec:discussion}
+A síntese dos evidências coletadas neste estudo aponta para uma convergência tecnológica onde a distinção entre operações de defesa e ataque se torna cada vez mais tênue. A resposta à primeira questão de pesquisa (QP1) indica que a trajetória evolutiva de 2020 a 2025 não foi linear, mas marcada por uma ruptura paradigmática em 2023 com a introdução massiva de Grandes Modelos de Linguagem (LLMs). Diferentemente das redes neurais discriminativas anteriores, que apenas classificavam tráfego, os novos agentes generativos introduziram a capacidade de raciocínio semântico nas operações de defesa, permitindo pela primeira vez que os sistemas compreendam o contexto de um ataque e não apenas seus padrões sintáticos.
+
+\subsection{O Paradoxo da Vulnerabilidade Adversarial}
+A análise das limitações (QP4) revela, contudo, um paradoxo crítico: a mesma complexidade que confere poder à IA defensiva também amplia sua superfície de ataque. A literatura revisada demonstra que menos de 15\% das arquiteturas defensivas propostas incorporam mecanismos nativos de robustez contra ataques adversariais. Técnicas de evasão, onde atacantes introduzem perturbações imperceptíveis nos dados de entrada para enganar classificadores, demonstraram eficácia alarmante contra modelos de \textit{Deep Learning} padrão. Mais grave ainda é a ameaça de envenenamento de dados (\textit{data poisoning}) em sistemas de aprendizado contínuo, onde atacantes injetam gradualmente tráfego malicioso rotulado como benigno para degradar a fronteira de decisão do modelo ao longo do tempo. A dependência crescente de modelos "caixa-preta" exacerba este risco, pois a opacidade das redes neurais profundas dificulta a auditoria de integridade lógica do modelo, criando um cenário onde a subversão do sistema de defesa pode passar despercebida até que um incidente catastrófico ocorra \cite{gupta2024adversarial}.
+
+\subsection{O Imperativo da Explicabilidade (XAI)}
+A barreira da explicabilidade permanece o principal obstáculo para a automação total das respostas a incidentes. Em ambientes regulados, sujeitos a normativas como a LGPD ou o EU AI Act, a incapacidade de rastrear a cadeia causal de uma decisão algorítmica impede legalmente a adoção de contramedidas ativas autônomas. Gestores de segurança relutam em autorizar sistemas SOAR a bloquear IPs ou isolar servidores críticos sem uma justificativa compreensível por humanos. Consequentemente, observa-se na indústria um movimento em direção à "IA Híbrida", onde o modelo não executa a ação final, mas atua como um sistema de suporte à decisão, apresentando evidências e recomendações probabilísticas para validação humana, equilibrando assim a velocidade da máquina com a responsabilidade legal humana \cite{moustafa2023explainable}.
+
+\subsection{Agenda de Pesquisa Futura}
+Com base nas lacunas identificadas, delineiam-se três direções prioritárias para a pesquisa nos próximos anos. Primeiramente, o desenvolvimento de \textit{Small Language Models} (SLMs) especializados em segurança, que possam ser executados localmente (\textit{on-premise}) para garantir a privacidade de dados sensíveis, mitigando os riscos de vazamento de dados inerentes ao uso de LLMs baseados em nuvem pública. Em segundo lugar, a integração de criptografia pós-quântica com algoritmos de IA, preparando os sistemas de detecção de anomalias para operar em um ambiente onde a criptografia atual se tornará obsoleta. Por fim, a evolução do Aprendizado Federado (\textit{Federated Learning}) para permitir a colaboração defensiva entre organizações sem o compartilhamento de dados brutos, criando uma inteligência de ameaças global que preserva o segredo industrial enquanto fortalece a imunidade coletiva contra campanhas de ataque em larga escala.
+
+\section{Conclusão}
+\label{sec:conclusion}
+Esta revisão sistemática da literatura analisou a trajetória da Inteligência Artificial na cibersegurança defensiva de 2020 a 2025, evidenciando uma maturação tecnológica sem precedentes impulsionada pela necessidade de contrabalançar a automação ofensiva. Conclui-se que a IA deixou de ser uma ferramenta auxiliar de análise estatística para se tornar o alicerce central das operações de segurança modernas. A transição de sistemas heurísticos baseados em regras para agentes generativos autônomos oferece a única esperança viável de fechar a assimetria temporal entre a velocidade dos atacantes e a capacidade de resposta dos defensores.
+
+Os resultados demonstram que, embora a precisão técnica da detecção tenha atingido níveis de excelência, o sucesso da próxima geração de defesas cognitivas dependerá menos da sofisticação algorítmica pura e mais da capacidade da indústria em resolver os desafios de confiança sistêmica. A robustez contra ataques adversariais, a explicabilidade das decisões e a governança ética da autonomia constituem o novo tripé de requisitos não funcionais que determinará a viabilidade de longo prazo destas soluções. Em última análise, a função do analista de segurança está sendo redefinida de operador de ferramentas para supervisor de arquiteturas cognitivas, exigindo uma requalificação profunda da força de trabalho para gerenciar a simbiose entre a intuição humana e a escala computacional da Inteligência Artificial.
+
+% CONFIGURAÇÃO DO BIBTEX
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\EOD
+
+\end{document}

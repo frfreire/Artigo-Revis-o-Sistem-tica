@@ -1,29 +1,31 @@
-
 \clearpage
 \onecolumn
 \appendices
 \section{Lista Consolidada de Estudos Primários}
 \label{app:studies}
 
-A Tabela \ref{tab:all_studies} apresenta a listagem completa dos 82 estudos primários incluídos nesta revisão sistemática.
+A Tabela \ref{tab:all_studies} apresenta a listagem completa dos 82 estudos primários incluídos nesta revisão sistemática, classificados por ano e categoria tecnológica.
 
-% Configuração V5: Booktabs Clean + Largura Total (17.5cm)
+% Configuração Visual Limpa (Booktabs + Scriptsize)
 \scriptsize
 \setlength\tabcolsep{4pt}
 \renewcommand{\arraystretch}{1.3}
+
+% Definição de colunas (RaggedRight para evitar buracos no texto)
+% Soma das larguras deve ser aprox 17.5cm para ocupar a página toda
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
-\begin{longtable}{L{0.6cm} L{2.2cm} C{0.8cm} L{2.8cm} L{8.5cm}}
+\begin{longtable}{L{0.8cm} L{2.5cm} C{0.8cm} L{2.8cm} L{10.5cm}}
 \caption{Lista Completa dos Estudos Primários Selecionados (S1-S82)} \label{tab:all_studies} \\
 \toprule
-\textbf{ID} & \textbf{Ref.} & \textbf{Ano} & \textbf{Categoria} & \textbf{Foco/Contribuição Principal} \\
+\textbf{ID} & \textbf{Referência} & \textbf{Ano} & \textbf{Categoria} & \textbf{Descrição / Contribuição Principal} \\
 \midrule
 \endfirsthead
 
 \multicolumn{5}{c}{{\bfseries \tablename\ \thetable{} -- Continuação da página anterior}} \\
 \toprule
-\textbf{ID} & \textbf{Ref.} & \textbf{Ano} & \textbf{Categoria} & \textbf{Foco/Contribuição Principal} \\
+\textbf{ID} & \textbf{Ref.} & \textbf{Ano} & \textbf{Categoria} & \textbf{Descrição / Contribuição Principal} \\
 \midrule
 \endhead
 

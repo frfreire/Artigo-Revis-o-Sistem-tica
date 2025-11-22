@@ -137,21 +137,21 @@ A avaliação crítica dos resultados reportados nos 82 estudos primários revel
 Em termos de métricas brutas de classificação, os sistemas baseados em \textit{Deep Learning} demonstram consistentemente superioridade sobre os métodos estatísticos tradicionais. A meta-análise dos dados extraídos indica que modelos híbridos, combinando CNNs para extração espacial e LSTMs para correlação temporal, alcançam F1-Scores médios superiores a 98,5\% em \textit{datasets} de benchmark padronizados, como o CIC-IDS2017 e o UNSW-NB15 \cite{vinayakumar2019deep, sarker2021, sharafaldin2018cic}. Especificamente na classificação de malware, as abordagens baseadas em GNNs reportam taxas de detecção acima de 99\% para variantes polimórficas, superando em mais de 15 pontos percentuais as soluções baseadas em assinaturas tradicionais, que falham ao lidar com ofuscação de código \cite{liu2024gnn, zhou2023comprehensive, chen2024ml}.
 
 \begin{table}[!t]
-\caption{Comparativo de Efetividade Média por Técnica (Meta-Análise)}
+\caption{Comparativo de Efetividade Média por Técnica (Meta-Análise Atualizada)}
 \label{tab:performance_comparison}
 \centering
 \setlength{\tabcolsep}{3pt}
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{l c c c}
+\begin{tabular}{l c c c c}
 \toprule
-\textbf{Técnica Predominante} & \textbf{Métrica Principal} & \textbf{Taxa de Erro (FPR)} & \textbf{Latência} \\
+\textbf{Técnica Predominante} & \textbf{F1-Score} & \textbf{FPR} & \textbf{Latência} & \textbf{Métrica Alternativa} \\
 \midrule
-ML Clássico (RF/SVM) & 94.2\% (F1-Score) & $\sim$2.8\% & Baixa ($\mu$s) \\
-Deep Learning (CNN/RNN) & 97.8\% (F1-Score) & $\sim$1.1\% & Média (ms) \\
-Graph Neural Nets (GNN) & 99.1\% (Detecção) & $<$0.5\% & Alta (ms) \\
-GenAI/LLMs (Agentes)* & \textbf{55\% Redução MTTR} & $<$10\% (Alucinação) & Muito Alta (s) \\
+ML Clássico (RF/SVM) & 94.2\% & 2.8\% & Baixa ($\mu$s) & — \\
+Deep Learning (CNN+LSTM) & \textbf{97.8\%} & 1.1\% & Média (ms) & — \\
+Graph Neural Nets (GNN) & 99.1\% & <0.5\% & Alta (ms) & Robustez anti-ofuscação \\
+GenAI/LLMs (Agentes) & N/A\textsuperscript{*} & N/A\textsuperscript{*} & Muito Alta (s) & MTTR: -50\% ($\pm$5\%); Alucinação: <8\% \\
 \bottomrule
-\multicolumn{4}{p{0.95\columnwidth}}{\scriptsize{*Para LLMs, a métrica padrão industrial é a redução no Tempo Médio de Resposta (MTTR) e eficiência de triagem, não o F1-Score binário \cite{capgemini2024, talha2025}.}}
+\multicolumn{5}{p{0.95\columnwidth}}{\scriptsize{\textsuperscript{*}LLMs em contextos de SecOps são avaliados por redução de tempo médio de resposta (MTTR) e qualidade de triagem, não por métricas de classificação binária tradicional \cite{capgemini2024, habibzadeh2025}.}}
 \end{tabular}%
 }
 \end{table}

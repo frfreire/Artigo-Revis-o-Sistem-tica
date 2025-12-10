@@ -1,10 +1,14 @@
+% ============================================================================
+% CABEÇALHO CORRIGIDO DA TABELA DO APÊNDICE
+% ============================================================================
+
 \clearpage
 \onecolumn
 \appendices
 \section{Lista Consolidada de Estudos Primários}
 \label{app:studies}
 
-A Tabela \ref{tab:all_studies} apresenta a listagem completa dos 82 estudos primários incluídos nesta revisão sistemática, classificados por ano e categoria tecnológica.
+A Tabela \ref{tab:all_studies} apresenta a listagem completa dos \textbf{132 estudos primários} incluídos nesta revisão sistemática, classificados por ano e categoria tecnológica.
 
 % Configuração Visual Limpa (Booktabs + Scriptsize)
 \scriptsize
@@ -12,12 +16,11 @@ A Tabela \ref{tab:all_studies} apresenta a listagem completa dos 82 estudos prim
 \renewcommand{\arraystretch}{1.3}
 
 % Definição de colunas (RaggedRight para evitar buracos no texto)
-% Soma das larguras deve ser aprox 17.5cm para ocupar a página toda
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
 \begin{longtable}{L{0.8cm} L{2.5cm} C{0.8cm} L{2.8cm} L{10.5cm}}
-\caption{Lista Completa dos Estudos Primários Selecionados (S1-S82)} \label{tab:all_studies} \\
+\caption{Lista Completa dos Estudos Primários Selecionados (S1-S132)} \label{tab:all_studies} \\
 \toprule
 \textbf{ID} & \textbf{Referência} & \textbf{Ano} & \textbf{Categoria} & \textbf{Descrição / Contribuição Principal} \\
 \midrule
@@ -37,11 +40,11 @@ A Tabela \ref{tab:all_studies} apresenta a listagem completa dos 82 estudos prim
 \endlastfoot
 S1 & \cite{vyas2025} & 2025 & Defesa Autônoma & Review de defesa autônoma realista \\ 
 S2 & \cite{awadallah2025} & 2025 & Metaverso & Segurança IA para Metaverso \\ 
-S3 & \cite{talha2025} & 2025 & LLM/SOC & LLMs em Operações de Segurança \\ 
-S4 & \cite{neupane2025} & 2025 & XAI/IDS & Review sistemático de XAI em IDS \\ 
+S3 & \cite{habibzadeh2025} & 2025 & LLM/SOC & LLMs em Operações de Segurança \\ 
+S4 & \cite{mohale2024systematic} & 2025 & XAI/IDS & Review sistemático de XAI em IDS \\ 
 S5 & \cite{lamaakal2025tiny} & 2025 & TinyML & Small Language Models na Borda \\ 
 S6 & \cite{abrar2025quantum} & 2025 & Pós-Quântica & Criptografia IA Pós-Quântica \\ 
-S7 & \cite{mavroudis2024} & 2024 & Online Learning & Modelos interpretáveis online \\ 
+S7 & \cite{kolicic2024inherently} & 2024 & Online Learning & Modelos interpretáveis online \\ 
 S8 & \cite{liu2024gnn} & 2024 & Malware/GNN & GNN auto-supervisionada \\ 
 S9 & \cite{li2024autom} & 2024 & Automação & Avanços em automação de segurança \\ 
 S10 & \cite{gupta2024genai} & 2024 & Adversarial & Ataques e Defesas em GenAI \\ 
@@ -69,7 +72,7 @@ S31 & \cite{ferrag2022edge} & 2022 & Edge AI & Dataset Edge-IIoTset \\
 S32 & \cite{al2022zero} & 2022 & Zero Trust & Arquitetura Zero Trust \\ 
 S33 & \cite{bhatt2022ensemble} & 2022 & Ensemble & Ensemble IDS para IoT \\ 
 S34 & \cite{mourao2022intrusion} & 2022 & GAN & Data Augmentation com GAN \\ 
-S35 & \cite{lee2022gan} & 2022 & GAN & Aumento de dados para IDS \\ 
+S35 & \cite{Zhao2022} & 2022 & GAN & Detecção de Intrusão \\ 
 S36 & \cite{sarker2021} & 2021 & Deep Learning & Visão abrangente de DL \\ 
 S37 & \cite{mishra2021detailed} & 2021 & Análise & Investigação detalhada de ML \\ 
 S38 & \cite{sarhan2021standard} & 2021 & Datasets & Feature sets padrão \\ 
@@ -112,10 +115,64 @@ S74 & \cite{xin2018machine} & 2018 & ML/DL & Métodos para cibersegurança \\
 S75 & \cite{roshan2018adaptive} & 2018 & Adaptativo & IDS Adaptativo \\ 
 S76 & \cite{sharafaldin2018cic} & 2018 & Dataset & CIC-IDS2017 \\ 
 S77 & \cite{madry2017towards} & 2018 & Adversarial & Treinamento Adversarial PGD \\ 
-S78 & \cite{tramèr2017ensemble} & 2018 & Adversarial & Ensemble Adversarial \\ 
+S78 & \cite{tramer2017ensemble} & 2018 & Adversarial & Ensemble Adversarial \\ 
 S79 & \cite{xu2020feature} & 2018 & Adversarial & Feature Squeezing \\ 
 S80 & \cite{song2018pixeldefend} & 2018 & Adversarial & PixelDefend \\ 
 S81 & \cite{samangouei2018defense} & 2018 & Adversarial & Defense-GAN \\ 
 S82 & \cite{xiao2018generating} & 2018 & Adversarial & Exemplos Adversariais com GAN \\ 
+S83 & \cite{xu2025llm} & 2025 & LLM & Survey abrangente de LLMs em ciberseg. \\ 
+S84 & \cite{das2025security} & 2025 & LLM/Privacy & Desafios de segurança e privacidade \\ 
+S85 & \cite{venkateswarlu2025privacy} & 2025 & Federated/XAI & FL com GNN e XAI \\ 
+S86 & \cite{balaji2025explainable} & 2025 & GNN/LLM & Detecção com GNN e LLMs \\ 
+S87 & \cite{ahi2025llms} & 2025 & GenAI/Dual-Use & Riscos duais de LLMs \\ 
+S88 & \cite{balakrishnan2025enhanced} & 2025 & XAI/GenAI & IDS com DL, XAI e GenAI \\ 
+S89 & \cite{sikder2025efficient} & 2025 & LLM/Smart Contracts & Detecção de vulnerabilidades \\ 
+S90 & \cite{zhou2025llm} & 2025 & LLM & Review de detecção de vulnerabilidades \\ 
+S91 & \cite{nguyen2025safe} & 2025 & LLM & Framework SAFE para vulnerabilidades \\ 
+S92 & \cite{sheng2025llms} & 2025 & LLM & Survey de técnicas de detecção \\ 
+S93 & \cite{shin2025semantic} & 2025 & GNN/Malware & Fusão semântica para malware \\ 
+S94 & \cite{alasmari2025phishing} & 2025 & LLM/XAI & Detecção de phishing com CNN-LSTM \\ 
+S95 & \cite{elgarhy2025robustness} & 2025 & XAI/Adversarial & Robustez de XAI contra ataques \\ 
+S96 & \cite{chen2025chatgpt} & 2025 & LLM & ChatGPT em smart contracts \\ 
+S97 & \cite{ileana2025intelligent} & 2025 & XAI/IoT & IDS explicável para IoT \\ 
+S98 & \cite{wang2025securemind} & 2025 & LLM & Detecção de bugs de memória \\ 
+S99 & \cite{alhashimi2025exploring} & 2025 & GenAI/SDLC & IA Generativa no ciclo SDLC \\ 
+S100 & \cite{luo2025federated} & 2025 & Federated/LLM & FL com LLMs para edge cloud \\ 
+S101 & \cite{kim2025payload} & 2025 & LLM & Detecção com análise de payload \\ 
+S102 & \cite{prajwalasimha2025federated} & 2025 & Federated/Zero-Day & FL adversarial para IoT \\ 
+S103 & \cite{mia2025federated} & 2025 & Federated & DL federado para redes \\ 
+S104 & \cite{gyawali2025augmenting} & 2025 & XAI/LLM & XAI com LLMs para ITS \\ 
+S105 & \cite{donato2025benchmarking} & 2025 & LLM/Adversarial & Robustez de LLMs \\ 
+S106 & \cite{rajee2025explainable} & 2025 & XAI/Adversarial & Detecção de ataques adversariais \\ 
+S107 & \cite{dou2025scalable} & 2025 & GNN & Sistema escalável de vulnerabilidades \\ 
+S108 & \cite{peng2025etrace} & 2025 & LLM & Análise de smart contracts \\ 
+S109 & \cite{li2025pvdetector} & 2025 & GNN & Detecção pré-treinada \\ 
+S110 & \cite{chen2025jps} & 2025 & LLM/Adversarial & Jailbreak de LLMs multimodais \\ 
+S111 & \cite{wu2025enhancing} & 2025 & GNN & Completude semântica interprocedural \\ 
+S112 & \cite{ghazal2024cybersecurity} & 2024 & LLM/XAI & Revolução via LLMs e XAI \\ 
+S113 & \cite{hasanov2024application} & 2024 & LLM & Aplicações de LLMs \\ 
+S114 & \cite{chen2024using} & 2024 & XAI/Adversarial & Técnicas de explicabilidade \\ 
+S115 & \cite{oki2024evaluation} & 2024 & Federated/XAI & FL com XAI para IDS \\ 
+S116 & \cite{hou2024adversarial} & 2024 & GNN/Adversarial & Robustez adversarial em GNN \\ 
+S117 & \cite{chen2024rmcbench} & 2024 & LLM & Benchmark de resistência \\ 
+S118 & \cite{zhang2024prompt} & 2024 & LLM & Detecção com ChatGPT \\ 
+S119 & \cite{reti2024honeytoken} & 2024 & LLM & Geração de honeytokens \\ 
+S120 & \cite{thompson2024entity} & 2024 & RL & RL para defesa autônoma \\ 
+S121 & \cite{skopik2024nlp} & 2024 & NLP & NLP para análise OSINT \\ 
+S122 & \cite{sruthi2024enhancing} & 2024 & XAI/Zero-Day & XAI para zero-day \\ 
+S123 & \cite{chaudhari2025deep} & 2025 & Deep Learning & Aplicações em cibersegurança \\ 
+S124 & \cite{ankalaki2025cyber} & 2025 & GenAI & Predição de ataques com GenAI \\ 
+S125 & \cite{asaduzzaman2022adversarial} & 2022 & Adversarial & Abordagem adversarial híbrida \\ 
+S126 & \cite{mohamed2024artificial} & 2024 & AI/APT & IA para vulnerabilidades APT \\ 
+S127 & \cite{alnahdi2024towards} & 2024 & XAI/LLM & Framework de transparência \\ 
+S128 & \cite{badawy2025ai} & 2025 & AI Review & Review técnico de IDS \\ 
+S129 & \cite{zhang2023enhancement} & 2023 & GNN/Robustness & Robustez de GNN \\ 
+S130 & \cite{walia2025ai} & 2025 & AI/Cloud & IA para infraestrutura cloud \\ 
+S131 & \cite{liu2025assessing} & 2025 & LLM/Robustness & Avaliação de robustez \\ 
+S132 & \cite{sangelia2025breaking} & 2025 & AI/Fraud & Detecção de fraudes \\ 
+
+% \bottomrule
+% \endlastfoot
+
 \end{longtable}
 \twocolumn

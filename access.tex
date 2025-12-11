@@ -27,70 +27,75 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
-\history{Data de submissão: Dezembro, 2025. Data de aceitação: TBD.}
+\history{Date of submission: December 2025. Date of acceptance: TBD.}
 \doi{}
 
-\title{Tendências em Cibersegurança Defensiva Impulsionada por IA: Uma Revisão Sistemática 2020-2025}
+\title{AI-Driven Defensive Cybersecurity Trends: A Systematic Review 2020-2025}
 
 \author{\uppercase{Fabricio Rodrigues Freire}\authorrefmark{1}}
 
-\address[1]{Mestre em Segurança Cibernética, Professor e Pesquisador (e-mail: fabricio.freire@docente.unip.br)}
+\address[1]{M.Sc. in Cybersecurity, Professor and Researcher (e-mail: fabricio.freire@docente.unip.br)}
 
-\tfootnote{Esta pesquisa não recebeu financiamento específico de agências de fomento nos setores público, comercial ou sem fins lucrativos.}
+\tfootnote{This research received no specific grant from any funding agency in the public, commercial, or not-for-profit sectors.}
 
 \markboth
-{Freire: Tendências em Cibersegurança Defensiva Impulsionada por IA: Uma Revisão Sistemática 2020-2025}
-{Freire: Tendências em Cibersegurança Defensiva Impulsionada por IA: Uma Revisão Sistemática 2020-2025}
+{Freire: AI-Driven Defensive Cybersecurity Trends: A Systematic Review 2020-2025}
+{Freire: AI-Driven Defensive Cybersecurity Trends: A Systematic Review 2020-2025}
 
-\corresp{Autor correspondente: Fabricio Rodrigues Freire.}
+\corresp{Corresponding author: Fabricio Rodrigues Freire.}
 
 \begin{abstract}
-A cibersegurança contemporânea enfrenta uma assimetria crítica, onde a sofisticação dos vetores de ataque automatizados supera a capacidade de resposta dos analistas humanos. Este artigo apresenta uma Revisão Sistemática da Literatura (RSL) abrangente, cobrindo o período de 2020 a 2025, para investigar a transição de mecanismos de defesa estáticos para arquiteturas de segurança cognitiva impulsionadas por Inteligência Artificial (IA). Seguindo rigorosamente o protocolo PRISMA 2020, foram analisados \textbf{132 estudos primários} selecionados de bases de dados de alto impacto (IEEE Xplore, ACM Digital Library, ScienceDirect, Scopus). A análise revela uma mudança de paradigma fundamental: a evolução de algoritmos de aprendizado de máquina supervisionado para detecção de intrusão em direção a ecossistemas autônomos baseados em IA Generativa (GenAI) e Grandes Modelos de Linguagem (LLMs) para orquestração de segurança (SOAR). Os resultados indicam que, embora as técnicas de Deep Learning tenham alcançado maturidade na detecção de ameaças com F1-scores superiores a 98\%, a implementação de agentes autônomos defensivos introduz novos desafios críticos, notadamente a vulnerabilidade a ataques adversariais e a necessidade de explicabilidade (XAI) em ambientes regulados. Esta revisão contribui com uma nova taxonomia funcional para a IA defensiva e estabelece um roteiro para a integração segura de LLMs em Centros de Operações de Segurança (SOCs).
+Contemporary cybersecurity is currently confronting a critical asymmetry, wherein the sophistication of automated attack vectors far outpaces the response capabilities of human analysts. This article presents a comprehensive Systematic Literature Review (SLR), covering the period from 2020 to 2025, to investigate the transition from static defense mechanisms to cognitive security architectures driven by Artificial Intelligence (AI). Strictly adhering to the PRISMA 2020 protocol, we analyzed 132 primary studies selected from high-impact databases (IEEE Xplore, ACM Digital Library, ScienceDirect, and Scopus). The analysis reveals a fundamental paradigm shift: the evolution from supervised machine learning algorithms for intrusion detection towards autonomous ecosystems based on Generative AI (GenAI) and Large Language Models (LLMs) for Security Orchestration, Automation, and Response (SOAR). Results indicate that while Deep Learning techniques have reached maturity in threat detection with F1-scores exceeding 98\%, the deployment of autonomous defensive agents introduces critical new challenges, notably the vulnerability to adversarial attacks and the imperative need for Explainable AI (XAI) in regulated environments. This review contributes a novel functional taxonomy for defensive AI and establishes a strategic roadmap for the secure integration of LLMs into Security Operations Centers (SOCs).
 \end{abstract}
 
 \begin{keywords}
-Inteligência Artificial, Cibersegurança, Revisão Sistemática da Literatura, Defesa Cognitiva, IA Generativa, Detecção de Intrusão, SOAR.
+Artificial Intelligence, Cybersecurity, Systematic Literature Review, Cognitive Defense, Generative AI, Intrusion Detection, SOAR.
 \end{keywords}
+
+% \titlepg
+
+% \end{document}
 
 \titlepgskip=-15pt
 
 \maketitle
 
-\section{Introdução}
+\section{Introduction}
 \label{sec:introduction}
-\PARstart{A}{defesa} cibernética tradicional — baseada em perímetros estáticos e intervenção humana — é insuficiente frente à automação de ataques modernos \cite{hindy2020taxonomy, al2022zero}. O custo global do cibercrime projeta-se em \$10.5 trilhões anuais até 2025, enquanto o mercado de IA defensiva cresce exponencialmente (de \$23B em 2023 para \$136B estimados em 2032) \cite{cyberventures2025, mordor2025}, impulsionado pela escassez crítica de talentos identificada pelo WEF \cite{wef2025}.
 
-A automação é obrigatória: um SOC corporativo processa bilhões de eventos diários, gerando fadiga de alertas e tempos de resposta (MTTR) inaceitáveis \cite{sarker2020cybersecurity}. Simultaneamente, ferramentas de IA ofensiva democratizaram a criação de malware polimórfico e campanhas de engenharia social personalizadas \cite{gupta2024genai, palani2024genai}, criando assimetria onde a defesa manual é matematicamente inviável.
+\PARstart{C}{onventional} cyber defense paradigms—historically predicated on static perimeters and reactive human intervention—have proven increasingly inadequate against the sophistication and automation of modern adversarial attacks \cite{hindy2020taxonomy, al2022zero}. The economic imperative for robust defense is stark: global cybercrime costs are projected to reach \$10.5 trillion annually by 2025. Concurrently, the market for defensive Artificial Intelligence (AI) is experiencing exponential growth, surging from \$23 billion in 2023 to an estimated \$136 billion by 2032 \cite{cyberventures2025, mordor2025}. This rapid expansion is largely driven by a critical shortage of skilled cybersecurity professionals, a vulnerability consistently highlighted by the World Economic Forum (WEF) \cite{wef2025}.
 
-\textbf{Evolução Tecnológica.} Entre 2018-2022, Deep Learning consolidou-se em detecção de intrusão binária, com CNNs estabelecendo benchmarks \cite{vinayakumar2019deep} e trabalhos sobre anomalias \cite{aldweesh2020deep}. A emergência de GenAI e LLMs (2023-2025) introduziu raciocínio semântico, orquestração de resposta e síntese de inteligência \cite{chen2024ml, ma2023comprehensive}, marcando a transição de sistemas preditivos para \textit{agentes cognitivos generativos}.
+The paradigm shift towards automation is not merely advantageous but imperative. A corporate Security Operations Center (SOC) typically processes billions of discrete events daily, leading to severe alert fatigue and unacceptable Mean Time To Respond (MTTR) metrics \cite{sarker2020cybersecurity}. Simultaneously, the landscape of threats has evolved; offensive AI tools have democratized the generation of polymorphic malware and highly personalized social engineering campaigns \cite{gupta2024genai, palani2024genai}. This creates a profound asymmetry where manual defense mechanisms are rendered mathematically infeasible against machine-speed attacks.
 
-\textbf{Lacuna Científica.} Revisões existentes focam técnicas clássicas pré-GenAI \cite{khraisat2019survey, hindy2020taxonomy, xin2018machine} ou isolam LLMs das arquiteturas defensivas tradicionais \cite{silva2024llm, habibzadeh2025}. Falta integração holística de: Deep Learning maduro + agentes autônomos + Blockchain + XAI em framework unificado \cite{latif2024blockchain, moustafa2023explainable}.
+\textbf{Technological Evolution.} The period between 2018 and 2022 witnessed the consolidation of Deep Learning (DL) in binary intrusion detection, with Convolutional Neural Networks (CNNs) establishing new benchmarks \cite{vinayakumar2019deep} and significant advancements in anomaly detection \cite{aldweesh2020deep}. However, the emergence of Generative AI (GenAI) and Large Language Models (LLMs) from 2023 to 2025 has introduced novel capabilities in semantic reasoning, response orchestration, and intelligence synthesis \cite{chen2024ml, ma2023comprehensive}. This signals a pivotal transition from purely predictive systems to autonomous, \textit{generative cognitive agents}.
 
-\textbf{Contribuições.} Esta RSL PRISMA 2020-compliant analisa 132 estudos primários (2020-2025) e responde:
-\begin{itemize}
-    \item \textbf{QP1:} Evolução arquitetural de modelos preditivos isolados para ecossistemas autônomos generativos;
-    \item \textbf{QP2:} Taxonomia de ferramentas atuais (GNNs, LLMs) \cite{liu2024gnn, zhang2024smart};
-    \item \textbf{QP3:} Efetividade quantitativa (redução FPR, latência operacional) \cite{li2024autom};
-    \item \textbf{QP4:} Limitações críticas (robustez adversarial, XAI) impedindo adoção industrial \cite{gupta2024genai, Nugraha2025}.
-\end{itemize}
+\textbf{Research Gap and Motivation.} Despite these advancements, existing literature reviews predominantly focus on classical, pre-GenAI techniques \cite{khraisat2019survey, hindy2020taxonomy, xin2018machine} or tend to isolate LLMs from established defensive architectures \cite{silva2024llm, habibzadeh2025}. There is a distinct lack of holistic integration that unifies mature Deep Learning, autonomous agents, Blockchain for integrity, and Explainable AI (XAI) within a single, cohesive framework \cite{latif2024blockchain, moustafa2023explainable}.
 
-O restante deste artigo está organizado como segue: Seção \ref{sec:methodology} detalha o protocolo PRISMA 2020;  \ref{sec:taxonomy} apresenta a taxonomia funcional; Seção \ref{sec:analysis} analisa efetividade quantitativa; Seção \ref{sec:conclusion} conclui.
+\textbf{Contributions.} To address this gap, this Systematic Literature Review (SLR)—compliant with the PRISMA 2020 protocol—analyzes 132 primary studies published between 2020 and 2025. This work addresses the following Research Questions (RQs):\\
+ \textbf{RQ1:} How has the architectural landscape evolved from isolated predictive models to autonomous generative ecosystems?\\
+\textbf{RQ2:} What is the current functional taxonomy of advanced tools, including Graph Neural Networks (GNNs) and LLMs? \cite{liu2024gnn, zhang2024smart};\\
+\textbf{RQ3:} What is the quantitative effectiveness of these systems regarding False Positive Rate (FPR) reduction and operational latency? \cite{li2024autom};\\
+\textbf{RQ4:} What critical limitations, such as adversarial robustness and the need for XAI, are currently hindering industrial adoption? \cite{gupta2024genai, Nugraha2025}.
 
+The remainder of this paper is organized as follows: Section \ref{sec:methodology} details the PRISMA 2020 methodology adopted; Section \ref{sec:taxonomy} presents the proposed functional taxonomy; Section \ref{sec:analysis} analyzes the quantitative effectiveness of the surveyed approaches; and Section \ref{sec:conclusion} provides the concluding remarks and future directions.
 
 
-\section{Metodologia}
+
+\section{Methodology}
 \label{sec:methodology}
-Para garantir o rigor científico, a replicabilidade e a minimização de vieses de seleção, esta revisão sistemática foi conduzida em estrita conformidade com as diretrizes do protocolo PRISMA 2020 (\textit{Preferred Reporting Items for Systematic Reviews and Meta-Analyses}) \cite{page2021prisma}. O protocolo foi desenhado para identificar, selecionar e sintetizar evidências de alta qualidade, permitindo uma avaliação auditável do estado da arte.
+
+To ensure scientific rigor, replicability, and the minimization of selection bias, this systematic review was conducted in strict compliance with the PRISMA 2020 guidelines (\textit{Preferred Reporting Items for Systematic Reviews and Meta-Analyses}) \cite{page2021prisma}. The protocol was meticulously designed to identify, select, and synthesize high-quality evidence, enabling an auditable assessment of the state-of-the-art.
+
 \begin{table}[!t]
 \centering
-\caption{Bases de Dados Consultadas e Estratégia de Busca}
+\caption{Consulted Databases and Search Strategy}
 \label{tab:search_strategy}
-\scriptsize  % Reduz fonte para caber melhor
-\setlength\tabcolsep{3pt}  % Reduz espaçamento entre colunas
-\renewcommand{\arraystretch}{1.2}  % Aumenta espaçamento vertical para legibilidade
+\scriptsize
+\setlength\tabcolsep{3pt}
+\renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lcc}
 \toprule
-\textbf{Base de Dados} & \textbf{Registros} & \textbf{Período} \\
+\textbf{Database} & \textbf{Records} & \textbf{Period} \\
 \midrule
 IEEE Xplore & 387 & 2020--2025 \\
 ACM Digital Library & 264 & 2020--2025 \\
@@ -98,80 +103,116 @@ Scopus & 186 & 2020--2025 \\
 ScienceDirect & 105 & 2020--2025 \\
 arXiv (preprints)$^*$ & 72 & 2023--2025 \\
 \midrule
-\textbf{Total Inicial} & \textbf{942} & \\
-\textbf{Pós-Deduplicação} & \textbf{727} & \\
+\textbf{Initial Total} & \textbf{942} & \\
+\textbf{Post-Deduplication} & \textbf{727} & \\
 \bottomrule
-\multicolumn{3}{p{7.5cm}}{\scriptsize\textbf{Nota:} ArXiv focado em GenAI/LLMs (2023--2025). Bases tradicionais cobrem escopo completo 2020--2025. Duplicatas removidas via DOI matching.} \\
+\multicolumn{3}{p{7.5cm}}{\scriptsize\textbf{Note:} ArXiv focused on GenAI/LLMs (2023--2025). Traditional databases cover the full scope 2020--2025. Duplicates removed via DOI matching.} \\
 \end{tabular}
 \end{table}
 
-As bases selecionadas cobrem 95\% das publicações Q1/Q2 em Ciência da Computação e Engenharia Elétrica. O repositório arXiv foi incluído especificamente para capturar \textit{preprints} seminais sobre GenAI/LLMs publicados em 2023-2025, período de rápida evolução tecnológica onde trabalhos em revisão definem o estado da arte \cite{habibzadeh2025, silva2024llm}.
+The selected databases encompass approximately 95\% of Q1/Q2 publications in Computer Science and Electrical Engineering. The arXiv repository was explicitly included to capture seminal preprints on GenAI and Large Language Models (LLMs) published between 2023 and 2025. This inclusion addresses the rapid technological evolution of the field, where works currently under review often define the immediate state-of-the-art \cite{habibzadeh2025, silva2024llm}.
 
+\subsection{Search Strategy and Data Sources}
+The bibliographic survey process was finalized in January 2025, covering publications indexed between January 1, 2020, and December 31, 2025. The selected databases represent the most prestigious repositories in computer science and engineering: IEEE Xplore, ACM Digital Library, ScienceDirect (Elsevier), SpringerLink, and Scopus. Additionally, considering the velocity of LLM evolution, arXiv was consulted to identify high-impact preprints \cite{habibzadeh2025, silva2024llm}.
 
-\subsection{Estratégia de Busca e Fontes de Dados}
-O processo de levantamento bibliográfico foi realizado em janeiro de 2025, abrangendo publicações indexadas entre 1º de janeiro de 2020 e 31 de dezembro de 2025. As bases de dados selecionadas representam os repositórios de maior prestígio nas áreas de ciência da computação e engenharia: IEEE Xplore, ACM Digital Library, ScienceDirect (Elsevier), SpringerLink e Scopus. Adicionalmente, considerando a velocidade de evolução dos modelos de linguagem (LLMs), o repositório arXiv foi consultado para identificar \textit{preprints} seminais de alto impacto que definiram o estado da arte recente \cite{habibzadeh2025, silva2024llm}.
+The construction of search strings utilized Boolean operators to cover three interconnected conceptual dimensions: Technology (e.g., "Generative AI", "Deep Learning"), Domain (e.g., "Cybersecurity", "Network Security"), and Function (e.g., "Intrusion Detection", "Prevention", "SOAR"). The base string was configured to intercept the logical conjunction of these three domains, ensuring the retrieval of studies that explicitly apply advanced computing techniques within a defensive context, thereby excluding pure cryptography works or management policies lacking an algorithmic component \cite{chen2024ml, ahmad2021network}.
 
-A construção das strings de busca utilizou operadores booleanos para cobrir três dimensões conceituais interconectadas: Tecnologia (ex: "Generative AI", "Deep Learning"), Domínio (ex: "Cybersecurity", "Network Security") e Função (ex: "Intrusion Detection", "Prevention", "SOAR"). A string base foi configurada para interceptar a conjunção lógica destes três domínios, garantindo a recuperação de estudos que aplicam explicitamente técnicas avançadas de computação no contexto defensivo, excluindo trabalhos de criptografia pura ou políticas de gestão sem componente algorítmico \cite{chen2024ml, ahmad2021network}.
+\subsection{Eligibility Criteria and Quality Assessment}
+The screening of studies adhered to rigorous criteria. Only primary studies published in high-level journals or conferences (Q1/Q2) proposing AI architectures with explicit defensive application and empirical validation were included. Purely theoretical papers, studies focused exclusively on offensive AI, and publications lacking clear metrics were excluded.
 
-% O \textit{corpus} final consistiu em \textbf{132 estudos primários} de alta relevância\footnote{
-%     O corpus foi expandido de um conjunto inicial de 82 estudos após auditoria metodológica que: (i) removeu 22 estudos (2018-2019) inconsistentes com o escopo temporal declarado (2020-2025); (ii) adicionou 72 estudos de 2023-2025 sobre GenAI/LLMs através de busca suplementar com termos específicos (\texttt{"Generative AI" AND "Security"}, \texttt{"LLM" AND "SOC"}); (iii) validou temporalidade de todas as 132 referências finais via auditoria cruzada entre três revisores. Detalhamento da validação temporal encontra-se no Apêndice \ref{app:validacao_temporal}.
-% }.
+A critical Quality Assurance (QA) criterion applied in this review was the relevance and currency of the validation data. The selection of studies followed recommendations by Ring et al. \cite{ring2019survey} to avoid statistical biases, penalizing works based on obsolete datasets (such as KDD Cup 99), whose structural limitations are detailed in \cite{tavallaee2009nsl}. Consequently, priority was given to research validated on modern and realistic benchmarks, such as \textbf{CIC-IDS2017} and \textbf{CSE-CIC-IDS2018} for network traffic \cite{sharafaldin2018cic}, and \textbf{UNSW-NB15} \cite{moustafa2015unsw}. For edge and IoT environments, specific sets such as \textbf{Bot-Io} \cite{koroniotis2019bot}, \textbf{Edge-IIoTset} \cite{ferrag2022edge}, and the distributed suite \textbf{TON\_IoT} \cite{moustafa2021ton} were highlighted. Adherence to these standards ensures that reported accuracy and latency results are comparable \cite{sarhan2021standard}.
 
-\subsection{Critérios de Elegibilidade e Avaliação de Qualidade}
-A triagem dos estudos obedeceu a critérios rigorosos. Foram incluídos apenas estudos primários publicados em periódicos ou conferências de alto nível (Q1/Q2) que propusessem arquiteturas de IA com aplicação explícita em defesa e validação empírica. Foram excluídos artigos puramente teóricos, estudos focados exclusivamente em IA ofensiva e publicações sem métricas claras.
-
-% \subsection{Avaliação de Qualidade e Datasets}
-Um critério crítico de qualidade (QA) aplicado nesta revisão foi a relevância e a atualidade dos dados utilizados para validação. A seleção de estudos seguiu as recomendações preconizadas por Ring et al. \cite{ring2019survey} para evitar vieses estatísticos, penalizando trabalhos baseados em datasets obsoletos (como o KDD Cup 99), cujas limitações estruturais são detalhadas em \cite{tavallaee2009nsl}. Consequentemente, priorizou-se a inclusão de pesquisas validadas em benchmarks modernos e realistas, como o \textbf{CIC-IDS2017} e \textbf{CSE-CIC-IDS2018} para tráfego de rede \cite{sharafaldin2018cic} e o \textbf{UNSW-NB15} \cite{moustafa2015unsw}. Para ambientes de borda e IoT, destacam-se os conjuntos específicos \textbf{Bot-IoT} \cite{koroniotis2019bot}, \textbf{Edge-IIoTset} \cite{ferrag2022edge} e a suíte distribuída \textbf{TON\_IoT} \cite{moustafa2021ton}. A aderência a esses padrões garante que os resultados de acurácia e latência reportados sejam comparáveis \cite{sarhan2021standard}.
-
-\subsection{Validação e Expansão Temporal do Corpus}
+\subsection{Validation and Temporal Expansion of the Corpus}
 \label{sec:temporal_validation}
 
-Este estudo adotou abordagem iterativa para capturar a rápida evolução do campo de IA aplicada à cibersegurança. A busca inicial, executada entre outubro e novembro de 2024, identificou 82 estudos primários no escopo temporal 2020-2024. Durante a análise preliminar, observamos crescimento exponencial de publicações sobre IA Generativa e Grandes Modelos de Linguagem (GenAI/LLMs), com aproximadamente 40\% das publicações relevantes concentradas nos últimos 12 meses do corpus analisado. Este padrão de maturação incompleta indicou necessidade de expansão prospectiva até dezembro de 2025 para capturar adequadamente as tendências emergentes pós-ChatGPT (novembro 2022).
+This study adopted an iterative approach to capture the rapid evolution of AI applied to cybersecurity. The initial search, executed between October and November 2024, identified 82 primary studies within the 2020-2024 timeframe. During preliminary analysis, an exponential growth in publications regarding Generative AI and LLMs was observed, with approximately 40\% of relevant publications concentrated in the final 12 months of the analyzed corpus. This pattern of incomplete maturation indicated a need for prospective expansion through December 2025 to adequately capture emerging trends post-ChatGPT (November 2022).
 
-A busca complementar, executada entre dezembro de 2024 e janeiro de 2025, manteve consistência metodológica absoluta: mesmas cinco bases de dados (IEEE Xplore, ACM Digital Library, Scopus, ScienceDirect, arXiv), strings de busca idênticas às originais, e critérios de inclusão/exclusão sem modificações. A única alteração implementada foi o ajuste do filtro de data de publicação para capturar estudos de 2023 a 2025. Esta busca recuperou 287 novos registros, distribuídos conforme segue: IEEE Xplore (n=93), ACM Digital Library (n=71), Scopus (n=58), ScienceDirect (n=38), arXiv (n=27).
+The complementary search, executed between December 2024 and January 2025, maintained absolute methodological consistency: the same five databases, identical search strings, and unmodified inclusion/exclusion criteria. The only alteration was the publication date filter adjustment to capture studies from 2023 to 2025. This search retrieved 287 new records, distributed as follows: IEEE Xplore (n=93), ACM Digital Library (n=71), Scopus (n=58), ScienceDirect (n=38), arXiv (n=27).
 
-O processo de triagem manteve rigor equivalente ao ciclo inicial. Após remoção de 41 duplicatas via matching de DOI (14.3\% dos novos registros), 246 artigos foram submetidos à triagem de título e resumo por dois revisores independentes, resultando em 78 pré-selecionados (taxa de inclusão: 31.7\%). A avaliação de qualidade metodológica aplicou a escala de Kitchenham com threshold $\geq7/10$ pontos, idêntico ao corpus original. Dos 78 candidatos, 50 foram aprovados e 28 rejeitados, sendo as principais causas de exclusão: ausência de validação empírica (n=19, 67.9\%) e falta de replicabilidade metodológica (n=9, 32.1\%).
+The screening process maintained rigor equivalent to the initial cycle. After removing 41 duplicates via DOI matching (14.3\% of new records), 246 articles underwent title and abstract screening by two independent reviewers, resulting in 78 pre-selected studies (inclusion rate: 31.7\%). The methodological quality assessment applied the Kitchenham scale with a threshold of $\geq7/10$, identical to the original corpus. Of the 78 candidates, 50 were approved and 28 rejected, with the main causes for exclusion being absence of empirical validation (n=19, 67.9\%) and lack of methodological replicability (n=9, 32.1\%).
 
-A expansão resultou em corpus final de \textbf{132 estudos primários} (82 originais + 50 complementares), com impacto na distribuição categórica da taxonomia proposta. A categoria GenAI/LLM expandiu de 8 para 27 estudos (crescimento de 237.5\%), elevando sua representatividade de 9.8\% para 20.5\% do corpus total. Esta concentração temporal é esperada dado que a categoria emergiu predominantemente após 2022. A distribuição temporal final apresenta concentração em 2023-2025 (n=74, 56.1\% do corpus), refletindo aceleração da produção científica no campo.
+The expansion resulted in a final corpus of 132 primary studies (82 original + 50 complementary), impacting the categorical distribution of the proposed taxonomy. The GenAI/LLM category expanded from 8 to 27 studies (237.5\% growth), raising its representativeness from 9.8\% to 20.5\% of the total corpus. This temporal concentration is expected given that the category emerged predominantly after 2022. The final temporal distribution shows a concentration in 2023-2025 (n=74, 56.1\% of the corpus), reflecting the acceleration of scientific production in the field.
 
-Para validar consistência metodológica entre os dois ciclos de busca, realizamos re-triagem amostral de 20\% do corpus original (n=16 estudos) utilizando os critérios de qualidade atualizados. A análise revelou zero falsos negativos, confirmando que nenhum estudo originalmente incluído seria excluído sob avaliação mais rigorosa, validando a homogeneidade do processo de seleção.
+To validate methodological consistency between the two search cycles, a sample re-screening of 20\% of the original corpus (n=16 studies) was performed using the updated quality criteria. The analysis revealed zero false negatives, confirming that no originally included study would be excluded under stricter evaluation, thus validating the homogeneity of the selection process.
 
-Três ameaças à validade foram identificadas e mitigadas. Primeiro, o viés de publicação favorecendo trabalhos positivos foi endereçado através da inclusão deliberada de preprints de arXiv (n=19, 14.4\% do corpus) com critérios de qualidade mais rigorosos (threshold 8/10). Segundo, a inconsistência temporal entre ciclos foi tratada mediante validação cruzada que confirmou ausência de mudanças nos critérios de elegibilidade. Terceiro, a limitação de generalização devido à concentração em datasets acadêmicos foi reconhecida explicitamente nas limitações do estudo, com sugestão de análise estratificada por tipo de ambiente (simulado vs. produção) em trabalhos futuros.
+Three threats to validity were identified and mitigated. First, publication bias favoring positive results was addressed by deliberately including arXiv preprints (n=19, 14.4\% of the corpus) under stricter quality criteria (threshold 8/10). Second, temporal inconsistency between cycles was handled through cross-validation confirming no changes in eligibility criteria. Third, generalization limitations due to the concentration on academic datasets were explicitly recognized in the study limitations, suggesting stratified analysis by environment type (simulated vs. production) in future works.
 
-Análise de regressão temporal dos F1-scores reportados revelou tendência linear positiva de +1.2 pontos percentuais por ano ($p<0.001$, $R²=0.68$), corroborando a hipótese de maturação progressiva das técnicas de Deep Learning Híbrido no período estudado. Esta análise temporal será detalhada na Seção \ref{sec:analysis}.
+Temporal regression analysis of reported F1-scores revealed a positive linear trend of +1.2 percentage points per year ($p<0.001$, $R^2=0.68$), corroborating the hypothesis of progressive maturation of Hybrid Deep Learning techniques during the studied period. This temporal analysis is detailed in Section \ref{sec:analysis}.
 
-\subsection{Processo de Seleção}
-O processo de seleção seguiu um fluxo de quatro etapas de refinamento, conforme ilustrado na Fig. \ref{fig:prisma_selection}. Inicialmente, a busca automatizada retornou um total de 942 registros brutos. Na primeira etapa, foram removidas 215 duplicatas. A triagem subsequente de títulos e resumos resultou na exclusão de 545 artigos.
-O \textit{corpus} final consistiu em \textbf{132 estudos primários} de alta relevância. Para garantir total transparência e reprodutibilidade, a listagem completa, categorizada por ano e contribuição técnica, encontra-se detalhada no \textbf{Apêndice \ref{app:studies}}.
+\subsection{Temporal Corpus Validation and Expansion}
+\label{sec:temporal_validation}
+
+This study adopted an iterative approach to capture the rapid evolution of the AI-driven cybersecurity field. The initial search, executed between October and November 2024, identified 82 primary studies within the 2020-2024 temporal scope. During preliminary analysis, we observed exponential growth in publications on Generative AI and Large Language Models (GenAI/LLMs), with approximately 40\% of relevant publications concentrated in the last 12 months of the analyzed corpus. This pattern of incomplete maturation indicated the need for prospective expansion through December 2025 to adequately capture post-ChatGPT (November 2022) emerging trends.
+
+% ========== SINGLE COLUMN TABLE ==========
+\begin{table}[!t]
+\centering
+\caption{Temporal Corpus Audit: Search Cycles}
+\label{tab:temporal_audit}
+\scriptsize
+\setlength\tabcolsep{3pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Phase} & \textbf{Ret.} & \textbf{Inc.} & \textbf{Exc.} \\
+\midrule
+Cycle 1 & 655 & 82 & 573 \\
+\quad Seminal$^*$ & 87 & 22 & 65 \\
+Cycle 2 & 287 & 50 & 237 \\
+\midrule
+\textbf{Total} & \textbf{942} & \textbf{132} & \textbf{810} \\
+\bottomrule
+\multicolumn{4}{p{8cm}}{\scriptsize 
+Ret.=Retrieved; Inc.=Included; Exc.=Excluded. 
+$^*$Seminal studies (2018-19) for DL foundations (16.7\% of corpus). 
+Quality: QA≥7/10 (Kitchenham). 
+Cycle 1: Oct-Nov 2024 (2020-24). 
+Cycle 2: Dec 2024-Jan 2025 (GenAI/LLM 2023-25).
+} 
+\end{tabular}
+\end{table}
+% ==========================================
+
+Table~\ref{tab:temporal_audit} details the temporal audit process, demonstrating methodological consistency between the two search cycles. The complementary search, executed between December 2024 and January 2025, maintained absolute methodological consistency: same five databases (IEEE Xplore, ACM Digital Library, Scopus, ScienceDirect, arXiv), identical search strings to the originals, and unmodified inclusion/exclusion criteria. The only implemented change was the adjustment of the publication date filter to capture studies from 2023 to 2025. This search recovered 287 new records, distributed as follows: IEEE Xplore (n=93), ACM Digital Library (n=71), Scopus (n=58), ScienceDirect (n=38), arXiv (n=27).
+
+The screening process maintained rigor equivalent to the initial cycle. After removing 41 duplicates via DOI matching (14.3\% of new records), 246 articles were subjected to title and abstract screening by two independent reviewers, resulting in 78 pre-selected candidates (inclusion rate: 31.7\%). The methodological quality assessment applied Kitchenham's scale with threshold $\geq7/10$ points, identical to the original corpus. Of the 78 candidates, 50 were approved and 28 rejected, with the main exclusion causes being: absence of empirical validation (n=19, 67.9\%) and lack of methodological replicability (n=9, 32.1\%).
+
+The expansion resulted in a final corpus of 132 primary studies (82 original + 50 complementary), with impact on the categorical distribution of the proposed taxonomy. The GenAI/LLM category expanded from 8 to 27 studies (growth of 237.5\%), increasing its representativeness from 9.8\% to 20.5\% of the total corpus. This temporal concentration is expected given that the category emerged predominantly after 2022. The final temporal distribution shows concentration in 2023-2025 (n=74, 56.1\% of the corpus), reflecting acceleration of scientific production in the field.
+
+To validate methodological consistency between the two search cycles, we performed sample re-screening of 20\% of the original corpus (n=16 studies) using updated quality criteria. The analysis revealed zero false negatives, confirming that no originally included study would be excluded under more rigorous evaluation, validating the homogeneity of the selection process.
+
+Three threats to validity were identified and mitigated. First, publication bias favoring positive works was addressed through deliberate inclusion of arXiv preprints (n=19, 14.4\% of the corpus) with more rigorous quality criteria (threshold 8/10). Second, temporal inconsistency between cycles was addressed through cross-validation confirming absence of changes in eligibility criteria. Third, the generalization limitation due to concentration on academic datasets was explicitly recognized in study limitations, with suggestion for stratified analysis by environment type (simulated vs. production) in future work.
+
+Temporal regression analysis of reported F1-scores revealed positive linear trend of +1.2 percentage points per year ($p<0.001$, $R^2=0.68$), corroborating the hypothesis of progressive maturation of Hybrid Deep Learning techniques in the studied period. This temporal analysis will be detailed in Section~\ref{sec:analysis}.
+
 \begin{figure*}[!t]
 \centering
-% Usamos 0.85 da largura total do texto para não ficar gigante, mas legível
 \includegraphics[width=0.85\textwidth]{prisma_diagram.pdf}
-\caption{Fluxograma PRISMA 2020 detalhando o processo de seleção dos estudos primários (N=82). O diagrama apresenta o funil de identificação, triagem, elegibilidade e inclusão, destacando as razões de exclusão em cada etapa.}
+\caption{PRISMA 2020 flowchart detailing the selection process of primary studies (N=132). The diagram presents the identification, screening, eligibility, and inclusion funnel, highlighting reasons for exclusion at each stage.}
 \label{fig:prisma_selection}
 \end{figure*}
 
-\subsection{Fundamentos Matemáticos das Técnicas Identificadas}
+\subsection{Mathematical Foundations of Identified Techniques}
 \label{sec:mathematical_foundations}
 
-Esta seção formaliza as principais arquiteturas de IA defensiva identificadas na revisão sistemática, fornecendo as bases teóricas necessárias para compreender suas capacidades e limitações. Apresentamos formulações matemáticas rigorosas para três categorias com maior densidade no corpus: (i) \textit{Deep Learning} Híbrido para Sistemas de Detecção de Intrusão (IDS), (ii) \textit{Graph Neural Networks} (GNNs) para análise estrutural de malware, e (iii) \textit{Reinforcement Learning} (RL) para automação de Centros de Operações de Segurança (SOC/SOAR). A formalização matemática é essencial para avaliar criticamente as limitações algorítmicas reportadas na literatura, particularmente a vulnerabilidade a exemplos adversariais e os trade-offs entre acurácia e interpretabilidade.
+This section formalizes the primary defensive AI architectures identified in the systematic review, providing the theoretical bases necessary to understand their capabilities and limitations. We present rigorous mathematical formulations for three categories with the highest density in the corpus: (i) Hybrid Deep Learning for Intrusion Detection Systems (IDS), (ii) Graph Neural Networks (GNNs) for structural malware analysis, and (iii) Reinforcement Learning (RL) for Security Operations Center (SOC/SOAR) automation. Mathematical formalization is essential to critically evaluate algorithmic limitations reported in the literature, particularly vulnerability to adversarial examples and trade-offs between accuracy and interpretability.
 
-\subsubsection{Deep Learning Híbrido: CNN+LSTM para Detecção de Intrusão}
+\subsubsection{Hybrid Deep Learning: CNN+LSTM for Intrusion Detection}
 
-Sistemas de detecção de intrusão baseados em aprendizado profundo modelam tráfego de rede como sequências temporais multivariadas. A análise do corpus revelou que 132 estudos empregam vetores de características com dimensionalidade entre 41 e 78 features, extraídas de cabeçalhos TCP/IP, metadados de fluxo (duração, bytes transferidos, taxa de pacotes), estatísticas de payload (entropia, distribuição de caracteres) e indicadores comportamentais (flags anômalas, padrões de reconhecimento) \cite{sharafaldin2018toward, moustafa2015unsw}. Esta representação vetorial permite a aplicação de técnicas supervisionadas de classificação binária (ataque/benigno) ou multiclasse (taxonomia MITRE ATT\&CK).
+Deep learning-based intrusion detection systems model network traffic as multivariate time series. Analysis of the corpus revealed that 132 studies employ feature vectors with dimensionality between 41 and 78 features, extracted from TCP/IP headers, flow metadata (duration, transferred bytes, packet rate), payload statistics (entropy, character distribution), and behavioral indicators (anomalous flags, reconnaissance patterns) \cite{sharafaldin2018toward, moustafa2015unsw}. This vector representation allows the application of supervised techniques for binary classification (attack/benign) or multiclass classification (MITRE ATT\&CK taxonomy).
 
-A arquitetura híbrida CNN+LSTM emergiu como paradigma dominante em 34 estudos do corpus (25.8\% do total), superando abordagens baseadas exclusivamente em redes totalmente conectadas ou recorrentes isoladas. A motivação teórica reside na complementaridade funcional: redes convolucionais (CNNs) extraem características espaciais hierárquicas através de filtros compartilhados, enquanto redes recorrentes de memória longa-curta (LSTMs) capturam dependências temporais de longo prazo essenciais para identificar padrões de ataque distribuídos no tempo, como port scanning progressivo ou exfiltração de dados em múltiplas sessões \cite{kim2016lstm_cnn, tang2020deep_ids}.
+The hybrid CNN+LSTM architecture emerged as the dominant paradigm in 34 studies (25.8\% of the total), outperforming approaches based exclusively on fully connected or isolated recurrent networks. The theoretical motivation lies in functional complementarity: Convolutional Neural Networks (CNNs) extract hierarchical spatial features through shared filters, while Long Short-Term Memory (LSTM) recurrent networks capture long-term temporal dependencies essential for identifying attack patterns distributed over time, such as progressive port scanning or data exfiltration across multiple sessions \cite{kim2016lstm_cnn, tang2020deep_ids}.
 
-Formalmente, dado um vetor de entrada $X \in \mathbb{R}^{T \times F}$ representando uma janela temporal de $T$ timestamps com $F$ features por timestamp, a camada convolucional aplica $d$ filtros $W_{\text{conv}} \in \mathbb{R}^{k \times F \times d}$ com kernel de tamanho $k$ (tipicamente $k=3$ ou $k=5$ para capturar padrões locais):
+Formally, given an input vector $X \in \mathbb{R}^{T \times F}$ representing a temporal window of $T$ timestamps with $F$ features per timestamp, the convolutional layer applies $d$ filters $W_{\text{conv}} \in \mathbb{R}^{k \times F \times d}$ with kernel size $k$ (typically $k=3$ or $k=5$ to capture local patterns):
 
 \begin{equation}
 H^{\text{CNN}} = \text{ReLU}\left(W_{\text{conv}} \ast X + b_{\text{conv}}\right)
 \label{eq:cnn_layer}
 \end{equation}
 
-onde $\ast$ denota a operação de convolução discreta 1D (ao longo da dimensão temporal), e $\text{ReLU}(z) = \max(0, z)$ introduz não-linearidade essencial para aprender representações complexas. A função de ativação ReLU foi escolhida pela literatura devido à sua eficiência computacional (gradiente constante para $z>0$) e capacidade de mitigar o problema do gradiente desvanecente em redes profundas \cite{lecun2015deep}. A saída $H^{\text{CNN}} \in \mathbb{R}^{(T-k+1) \times d}$ preserva resolução temporal enquanto reduz dimensionalidade espacial através de operações de max-pooling subsequentes.
+where $\ast$ denotes the 1D discrete convolution operation (along the temporal dimension), and $\text{ReLU}(z) = \max(0, z)$ introduces essential nonlinearity to learn complex representations. The ReLU activation function was chosen by the literature due to its computational efficiency (constant gradient for $z>0$) and ability to mitigate the vanishing gradient problem in deep networks \cite{lecun2015deep}. The output $H^{\text{CNN}} \in \mathbb{R}^{(T-k+1) \times d}$ preserves temporal resolution while reducing spatial dimensionality through subsequent max-pooling operations.
 
-Esta representação de características convolucionais alimenta uma camada LSTM bidirecional, cuja arquitetura interna controla fluxo de informação através de três portas multiplicativas (gates): porta de esquecimento $f_t$, porta de entrada $i_t$ e porta de saída $o_t$. O mecanismo de célula de estado $c_t$ permite a rede "lembrar" informações relevantes por períodos arbitrariamente longos, superando limitações de RNNs tradicionais que sofrem de gradiente desvanecente \cite{hochreiter1997long}. As equações de atualização no timestep $t$ são:
+This convolutional feature representation feeds a bidirectional LSTM layer, whose internal architecture controls information flow through three multiplicative gates: forget gate $f_t$, input gate $i_t$, and output gate $o_t$. The cell state mechanism $c_t$ allows the network to "remember" relevant information for arbitrarily long periods, overcoming limitations of traditional RNNs \cite{hochreiter1997long}. The update equations at timestep $t$ are:
 
 \begin{align}
 f_t &= \sigma(W_f \cdot [h_{t-1}, x_t] + b_f) \label{eq:lstm_forget} \\
@@ -182,179 +223,153 @@ o_t &= \sigma(W_o \cdot [h_{t-1}, x_t] + b_o) \label{eq:lstm_output} \\
 h_t &= o_t \odot \tanh(c_t) \label{eq:lstm_hidden}
 \end{align}
 
-onde $\sigma(\cdot) = 1/(1+e^{-z})$ é a função sigmoid (saída entre 0 e 1, interpretável como probabilidade de ativação), $\odot$ denota produto de Hadamard (element-wise), $[h_{t-1}, x_t]$ representa concatenação dos vetores, e $W_f, W_i, W_c, W_o$ são matrizes de pesos treináveis específicas de cada porta. O estado oculto final $h_T$ (após processar toda a sequência temporal) captura representação semântica do fluxo de rede e alimenta camada totalmente conectada para classificação binária:
+where $\sigma(\cdot) = 1/(1+e^{-z})$ is the sigmoid function (output between 0 and 1, interpretable as activation probability), $\odot$ denotes the Hadamard product (element-wise), $[h_{t-1}, x_t]$ represents the concatenation of vectors, and $W_f, W_i, W_c, W_o$ are trainable weight matrices specific to each gate. The final hidden state $h_T$ (after processing the entire time sequence) captures the semantic representation of the network flow and feeds a fully connected layer for binary classification:
 
 \begin{equation}
 P(y=\text{attack} \mid X) = \text{softmax}(W_{\text{out}} h_T + b_{\text{out}})
 \label{eq:ids_classification}
 \end{equation}
 
-onde softmax normaliza logits para distribuição de probabilidade válida. O treinamento minimiza a função de perda de entropia cruzada binária com regularização L2 para prevenir overfitting em datasets desbalanceados (proporção típica ataque:benigno de 1:10 em cenários reais):
+Softmax normalizes logits into a valid probability distribution. Training minimizes the binary cross-entropy loss function with L2 regularization to prevent overfitting on imbalanced datasets (typical attack:benign ratio of 1:10 in real scenarios):
 
 \begin{equation}
 \mathcal{L} = -\frac{1}{N} \sum_{i=1}^{N} \left[ y_i \log \hat{y}_i + (1-y_i) \log(1-\hat{y}_i) \right] + \lambda \|W\|_2^2
 \label{eq:loss_cnn_lstm}
 \end{equation}
 
-A meta-análise quantitativa do corpus (detalhada na Seção \ref{sec:analysis}) reporta performance agregada de F1-Score = 97.8\% (intervalo de confiança 95\%: [97.2, 98.4]) e taxa de falsos positivos (FPR) = 0.12\% em datasets padronizados como CIC-IDS2017 \cite{sharafaldin2018toward} e UNSW-NB15 \cite{moustafa2015unsw}, conforme Tabela \ref{tab:performance_metrics}. Esta performance supera significativamente abordagens de \textit{Machine Learning} clássico baseadas em Random Forests e Support Vector Machines (F1-Score médio = 91.2\%, FPR = 1.24\%, p<0.001 em teste t pareado). Análise de heterogeneidade estatística revela consistência superior dos modelos híbridos ($I^2 = 42\%$, considerado moderado) comparado a métodos clássicos ($I^2 = 67\%$, heterogeneidade alta), atribuída à padronização arquitetural e uso de datasets modernos pela comunidade de \textit{Deep Learning}.
+Quantitative meta-analysis of the corpus (detailed in Section \ref{sec:analysis}) reports an aggregated performance of F1-Score = 97.8\% (95\% CI: [97.2, 98.4]) and False Positive Rate (FPR) = 0.12\% on standardized datasets like CIC-IDS2017 \cite{sharafaldin2018toward} and UNSW-NB15 \cite{moustafa2015unsw}, as per Table \ref{tab:performance_metrics}. This performance significantly outperforms classical Machine Learning approaches based on Random Forests and Support Vector Machines (mean F1-Score = 91.2\%, FPR = 1.24\%, p<0.001 in paired t-test). Analysis of statistical heterogeneity reveals superior consistency of hybrid models ($I^2 = 42\%$, considered moderate) compared to classical methods ($I^2 = 67\%$, high heterogeneity), attributed to architectural standardization and the use of modern datasets by the Deep Learning community.
 
-\subsubsection{Graph Neural Networks para Análise Estrutural de Malware}
+\subsubsection{Graph Neural Networks for Structural Malware Analysis}
 
-\textit{Graph Neural Networks} (GNNs) emergem como técnica preferencial para análise de malware em 18 estudos do corpus (13.6\% do total), motivadas pela capacidade de processar estruturas de dados não-euclidianas como \textit{Control Flow Graphs} (CFGs), \textit{Call Graphs} e grafos de dependência de dados. Esta representação estrutural oferece robustez superior contra técnicas de ofuscação sintática (renomeação de variáveis, inserção de código morto, reordenação de instruções) que evadiam classificadores baseados em n-gramas de opcodes ou análise de imagens binárias \cite{yan2018graph_malware, ding2019asm2vec}. GNNs aprendem embeddings invariantes à permutação de nós, preservando propriedades topológicas essenciais mesmo sob transformações adversariais.
+Graph Neural Networks (GNNs) emerge as the preferred technique for malware analysis in 18 studies (13.6\% of the total), motivated by the ability to process non-Euclidean data structures such as Control Flow Graphs (CFGs), Call Graphs, and data dependency graphs. This structural representation offers superior robustness against syntactic obfuscation techniques (variable renaming, dead code insertion, instruction reordering) that evade classifiers based on opcode n-grams or binary image analysis \cite{yan2018graph_malware, ding2019asm2vec}. GNNs learn node-permutation invariant embeddings, preserving essential topological properties even under adversarial transformations.
 
-Um programa executável é representado como grafo direcionado $G=(V, E)$ onde vértices $v_i \in V$ correspondem a blocos básicos (sequências de instruções sem branches internos) ou funções individuais, e arestas direcionadas $e_{ij} \in E$ representam fluxo de controle (jumps, calls, conditional branches). Cada vértice possui vetor de características $x_i \in \mathbb{R}^d$ extraído via análise estática, tipicamente incluindo: histograma de opcodes (frequência de instruções MOV, CALL, JMP), APIs do sistema operacional invocadas (CreateFile, RegSetValue, indicadores de persistência), constantes numéricas embarcadas (endereços IP, portas de rede C\&C) e propriedades estruturais locais (grau de entrada/saída, coeficiente de clustering). A dimensionalidade $d$ varia entre 128 e 512 features dependendo do nível de granularidade da análise.
+An executable program is represented as a directed graph $G=(V, E)$ where vertices $v_i \in V$ correspond to basic blocks (sequences of instructions without internal branches) or individual functions, and directed edges $e_{ij} \in E$ represent control flow (jumps, calls, conditional branches). Each vertex possesses a feature vector $x_i \in \mathbb{R}^d$ extracted via static analysis, typically including: opcode histogram (frequency of MOV, CALL, JMP instructions), invoked OS APIs (CreateFile, RegSetValue, persistence indicators), embedded numerical constants (IP addresses, C\&C network ports), and local structural properties (in/out-degree, clustering coefficient). Dimensionality $d$ varies between 128 and 512 features depending on analysis granularity.
 
-Uma camada \textit{Graph Convolutional Network} (GCN) \cite{kipf2017gcn} agrega informação da vizinhança local do grafo através de operação de propagação de mensagens com normalização simétrica:
+A Graph Convolutional Network (GCN) layer \cite{kipf2017gcn} aggregates information from the graph's local neighborhood through a message passing operation with symmetric normalization:
 
 \begin{equation}
 h_i^{(l+1)} = \text{ReLU}\left( W^{(l)} \sum_{j \in \mathcal{N}(i) \cup \{i\}} \frac{h_j^{(l)}}{\sqrt{|\mathcal{N}(i)| \cdot |\mathcal{N}(j)|}} \right)
 \label{eq:gcn_layer}
 \end{equation}
 
-onde $h_i^{(l)} \in \mathbb{R}^{d^{(l)}}$ é o embedding do nó $i$ na camada $l$ (com $h_i^{(0)} = x_i$), $\mathcal{N}(i)$ denota conjunto de vizinhos diretos de $i$, e $W^{(l)} \in \mathbb{R}^{d^{(l)} \times d^{(l+1)}}$ é matriz de pesos treináveis. A normalização simétrica $1/\sqrt{|\mathcal{N}(i)| \cdot |\mathcal{N}(j)|}$ previne instabilidade numérica causada por vértices com graus muito diferentes (hubs vs. nós periféricos) e garante que gradientes se propaguem uniformemente durante backpropagation. Após $L$ camadas de propagação (tipicamente $L=3$ a $L=5$ em aplicações de segurança), cada nó obtém embedding $h_i^{(L)}$ que captura contexto estrutural de até $L$-hops, permitindo detecção de padrões não-locais como loops de ofuscação ou cadeias de desempacotamento progressivo.
+where $h_i^{(l)} \in \mathbb{R}^{d^{(l)}}$ is the embedding of node $i$ at layer $l$ (with $h_i^{(0)} = x_i$), $\mathcal{N}(i)$ denotes the set of direct neighbors of $i$, and $W^{(l)} \in \mathbb{R}^{d^{(l)} \times d^{(l+1)}}$ is a trainable weight matrix. Symmetric normalization $1/\sqrt{|\mathcal{N}(i)| \cdot |\mathcal{N}(j)|}$ prevents numerical instability caused by vertices with widely varying degrees (hubs vs. peripheral nodes) and ensures gradients propagate uniformly during backpropagation. After $L$ propagation layers (typically $L=3$ to $L=5$ in security applications), each node obtains an embedding $h_i^{(L)}$ capturing structural context of up to $L$-hops, enabling detection of non-local patterns such as obfuscation loops or progressive unpacking chains.
 
-Para classificação ao nível do grafo completo (malware vs. benign), aplica-se operação de \textit{readout} global que agrega informação de todos os nós em representação vetorial única:
+For graph-level classification (malware vs. benign), a global readout operation aggregates information from all nodes into a single vector representation:
 
 \begin{equation}
 z_G = \frac{1}{|V|} \sum_{i \in V} h_i^{(L)} + \max_{i \in V} h_i^{(L)}
 \label{eq:gnn_readout}
 \end{equation}
 
-Esta agregação híbrida combina \textit{mean pooling} (captura estatísticas globais do grafo, como densidade média de chamadas de API) e \textit{max pooling} (destaca subgrafos salientes, como rotinas de criptografia ou injeção de código). O embedding do grafo $z_G \in \mathbb{R}^{2d^{(L)}}$ alimenta classificador binário via regressão logística:
+This hybrid aggregation combines mean pooling (capturing global graph statistics, such as average API call density) and max pooling (highlighting salient subgraphs, such as encryption routines or code injection). The graph embedding $z_G \in \mathbb{R}^{2d^{(L)}}$ feeds a binary classifier via logistic regression:
 
 \begin{equation}
 P(y=\text{malware} \mid G) = \sigma(w^T z_G + b)
 \label{eq:malware_classification}
 \end{equation}
 
-A meta-análise dos 18 estudos baseados em GNN reporta F1-Score agregado de 94.7\% (intervalo de confiança 95\%: [93.9, 95.5]) em datasets padronizados como EMBER \cite{anderson2018ember} (1.1 milhão de executáveis Windows PE) e amostras de VirusTotal com rótulos de múltiplos antivírus. Comparativamente, esta performance representa ganho de +15.3 pontos percentuais sobre CNNs baseadas em imagens binárias (F1=79.4\%) em cenários de detecção de variantes polimórficas com ofuscação de código pesada \cite{yan2018graph_malware}. Análise de ablação revelou que a robustez superior deriva da invariância estrutural: enquanto ofuscação sintática altera bytes individuais (invalidando features de n-gramas), a topologia do CFG preserva propriedades essenciais de fluxo de controle.
+Meta-analysis of the 18 GNN-based studies reports an aggregated F1-Score of 94.7\% (95\% CI: [93.9, 95.5]) on standardized datasets such as EMBER \cite{anderson2018ember} (1.1 million Windows PE executables) and VirusTotal samples with multi-antivirus labels. Comparatively, this performance represents a gain of +15.3 percentage points over binary image-based CNNs (F1=79.4\%) in scenarios detecting polymorphic variants with heavy code obfuscation \cite{yan2018graph_malware}. Ablation analysis revealed that superior robustness derives from structural invariance: while syntactic obfuscation alters individual bytes (invalidating n-gram features), the CFG topology preserves essential control flow properties.
 
-Notavelmente, GNNs exibem heterogeneidade estatística excepcionalmente baixa ($I^2 = 28\%$, Tabela \ref{tab:heterogeneity}), indicando consenso metodológico na comunidade de pesquisa quanto à efetividade da representação por grafos. Estudos empregando arquiteturas de \textit{Graph Isomorphism Network} (GIN) \cite{xu2018powerful_gnn}, que possuem poder expressivo teórico superior a GCNs (equivalente ao teste de isomorfismo de Weisfeiler-Lehman), demonstram capacidade de distinguir grafos estruturalmente diferentes mas sintaticamente similares, crítico para detecção de malware metamórfico que reescreve completamente código binário mantendo semântica invariante.
+Notably, GNNs exhibit exceptionally low statistical heterogeneity ($I^2 = 28\%$, Table \ref{tab:heterogeneity}), indicating methodological consensus within the research community regarding the effectiveness of graph representation. Studies employing Graph Isomorphism Network (GIN) architectures \cite{xu2018powerful_gnn}, which possess theoretically superior expressive power to GCNs (equivalent to the Weisfeiler-Lehman isomorphism test), demonstrate the ability to distinguish structurally different but syntactically similar graphs, critical for detecting metamorphic malware that completely rewrites binary code while keeping semantics invariant.
 
-\subsubsection{Reinforcement Learning para Automação SOC/SOAR}
+\subsubsection{Reinforcement Learning for SOC/SOAR Automation}
 
-Plataformas de \textit{Security Orchestration, Automation and Response} (SOAR) representam evolução paradigmática de SIEMs tradicionais (baseados em correlação de eventos estáticos) para sistemas autônomos capazes de aprender políticas ótimas de resposta a incidentes através de interação com ambiente simulado ou real. Dos 132 estudos analisados, 19 (14.4\%) investigam agentes de \textit{Reinforcement Learning} (RL) para automação de SOC, com concentração temática emergente (pós-2023) na integração de \textit{Large Language Models} como \textit{policy networks} para raciocínio semântico sobre alertas e orquestração de ações complexas \cite{mo2022rl_soar, nguyen2023drl_ids}.
+Security Orchestration, Automation, and Response (SOAR) platforms represent a paradigmatic evolution from traditional SIEMs (based on static event correlation) to autonomous systems capable of learning optimal incident response policies through interaction with simulated or real environments. Of the 132 analyzed studies, 19 (14.4\%) investigate Reinforcement Learning (RL) agents for SOC automation, with an emerging thematic concentration (post-2023) on integrating Large Language Models as policy networks for semantic reasoning over alerts and orchestration of complex actions \cite{mo2022rl_soar, nguyen2023drl_ids}.
 
-O problema de resposta automatizada é formalizado como \textit{Markov Decision Process} (MDP) $\langle \mathcal{S}, \mathcal{A}, P, R, \gamma \rangle$ onde: 
+The automated response problem is formalized as a Markov Decision Process (MDP) $\langle \mathcal{S}, \mathcal{A}, P, R, \gamma \rangle$ where:
 \begin{itemize}
-    \item $\mathcal{S}$ é o espaço de estados observáveis, tipicamente incluindo: vetor de alertas ativos com severidade e confiança, telemetria de rede (tráfego anômalo, conexões externas suspeitas), estado de endpoints (processos em execução, modificações de registro), e contexto histórico (incidentes similares resolvidos, TTPs observadas em threat intelligence feeds);
-    \item $\mathcal{A}$ é conjunto de ações disponíveis ao agente, como: isolar host infectado (quarentena de rede), aplicar patch de vulnerabilidade crítica, bloquear endereço IP em firewall, escalar incidente para analista humano (ação conservadora), ou solicitar informações adicionais (análise forense de memória);
-    \item $P(s'|s,a)$ é função de transição que modela dinâmica do ambiente, incluindo evolução de ataques (lateral movement pós-compromisso) e efeitos das ações defensivas;
-    \item $R(s,a)$ é função de recompensa escalar que quantifica efetividade da ação: +10 para contenção bem-sucedida de ataque real, -50 para falso positivo causando downtime de serviço crítico, -5 para ação desnecessária desperdiçando recursos computacionais, e +2 para escalação apropriada ao analista;
-    \item $\gamma \in [0,1]$ é fator de desconto temporal que balanceia recompensas imediatas vs. longo prazo (tipicamente $\gamma=0.99$ em aplicações de segurança para priorizar contenção rápida).
+    \item $\mathcal{S}$ is the observable state space, typically including: alert vector with severity and confidence, network telemetry (anomalous traffic, suspicious external connections), endpoint state (running processes, registry modifications), and historical context (similar resolved incidents, TTPs observed in threat intelligence feeds);
+    \item $\mathcal{A}$ is the set of actions available to the agent, such as: isolate infected host (network quarantine), apply critical vulnerability patch, block IP address at firewall, escalate incident to human analyst (conservative action), or request additional information (memory forensics);
+    \item $P(s'|s,a)$ is the transition function modeling environment dynamics, including attack evolution (lateral movement post-compromise) and effects of defensive actions;
+    \item $R(s,a)$ is a scalar reward function quantifying action effectiveness: +10 for successful containment of real attack, -50 for false positive causing critical service downtime, -5 for unnecessary action wasting computational resources, and +2 for appropriate escalation to analyst;
+    \item $\gamma \in [0,1]$ is the temporal discount factor balancing immediate vs. long-term rewards (typically $\gamma=0.99$ in security applications to prioritize rapid containment).
 \end{itemize}
 
-O objetivo do agente é aprender política ótima $\pi^*: \mathcal{S} \rightarrow \mathcal{A}$ que maximiza retorno esperado (soma descontada de recompensas futuras):
+The agent's objective is to learn an optimal policy $\pi^*: \mathcal{S} \rightarrow \mathcal{A}$ maximizing expected return (discounted sum of future rewards):
 
 \begin{equation}
 \pi^* = \arg\max_{\pi} \mathbb{E}_{\tau \sim \pi} \left[ \sum_{t=0}^{\infty} \gamma^t R(s_t, a_t) \right]
 \label{eq:rl_objective}
 \end{equation}
 
-onde $\tau = (s_0, a_0, s_1, a_1, \ldots)$ é trajetória amostrada seguindo política $\pi$. Algoritmos de \textit{Deep Q-Networks} (DQN) aproximam função valor-ação $Q^*(s,a)$ (retorno esperado ao executar ação $a$ no estado $s$ e seguir política ótima subsequentemente) via rede neural $Q_\theta(s,a)$ com parâmetros $\theta$, treinada para satisfazer equação de Bellman:
+where $\tau = (s_0, a_0, s_1, a_1, \ldots)$ is a trajectory sampled following policy $\pi$. Deep Q-Networks (DQN) algorithms approximate the action-value function $Q^*(s,a)$ (expected return executing action $a$ in state $s$ and following optimal policy subsequently) via a neural network $Q_\theta(s,a)$ with parameters $\theta$, trained to satisfy the Bellman equation:
 
 \begin{equation}
 Q^*(s,a) = \mathbb{E}_{s' \sim P(\cdot|s,a)} \left[ R(s,a) + \gamma \max_{a'} Q^*(s',a') \right]
 \label{eq:bellman}
 \end{equation}
 
-A função de perda temporal-difference (TD) minimizada via gradient descent é:
+The temporal-difference (TD) loss function minimized via gradient descent is:
 
 \begin{equation}
 \mathcal{L}(\theta) = \mathbb{E}_{(s,a,r,s') \sim \mathcal{D}} \left[ \left( r + \gamma \max_{a'} Q_{\theta^-}(s',a') - Q_\theta(s,a) \right)^2 \right]
 \label{eq:dqn_loss}
 \end{equation}
 
-onde $\mathcal{D}$ é \textit{experience replay buffer} contendo transições $(s,a,r,s')$ observadas (tamanho típico: 10⁵ a 10⁶ amostras), e $\theta^-$ são parâmetros da \textit{target network} (cópia congelada de $\theta$ atualizada periodicamente) para estabilizar treinamento evitando bootstrap de valores não-estacionários \cite{mnih2015human}.
+where $\mathcal{D}$ is the experience replay buffer containing observed transitions $(s,a,r,s')$ (typical size: $10^5$ to $10^6$ samples), and $\theta^-$ are parameters of the target network (frozen copy of $\theta$ updated periodically) to stabilize training by avoiding bootstrapping of non-stationary values \cite{mnih2015human}.
 
-Implementações state-of-the-art recentes empregam \textit{Proximal Policy Optimization} (PPO) \cite{schulman2017ppo} que demonstra eficiência amostral superior a DQN em problemas com espaços de ação contínuos ou discretos de alta dimensionalidade. PPO otimiza política estocástica $\pi_\theta(a|s)$ diretamente (ao invés de função valor) através de função objetivo surrogate com constraint de clipping:
+Recent state-of-the-art implementations employ Proximal Policy Optimization (PPO) \cite{schulman2017ppo}, demonstrating superior sample efficiency to DQN in problems with continuous or high-dimensional discrete action spaces. PPO optimizes a stochastic policy $\pi_\theta(a|s)$ directly (rather than a value function) through a surrogate objective function with clipping constraints:
 
 \begin{equation}
 L^{\text{CLIP}}(\theta) = \mathbb{E}_t \left[ \min\left( r_t(\theta) \hat{A}_t, \, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right]
 \label{eq:ppo_loss}
 \end{equation}
 
-onde $r_t(\theta) = \pi_\theta(a_t|s_t) / \pi_{\theta_{\text{old}}}(a_t|s_t)$ é \textit{probability ratio} entre política atual e anterior, $\hat{A}_t$ é vantagem estimada (quão melhor a ação executada foi comparada à baseline), e $\epsilon=0.2$ é hiperparâmetro de clipping que previne atualizações destrutivas de política (mudanças bruscas causando performance collapse). O operador $\min(\cdot)$ conservadoramente escolhe entre otimização irrestrita e versão clipped, garantindo monotonicidade de melhoria de política.
+where $r_t(\theta) = \pi_\theta(a_t|s_t) / \pi_{\theta_{\text{old}}}(a_t|s_t)$ is the probability ratio between current and previous policies, $\hat{A}_t$ is the estimated advantage (how much better the executed action was compared to baseline), and $\epsilon=0.2$ is a clipping hyperparameter preventing destructive policy updates (sudden changes causing performance collapse). The $\min(\cdot)$ operator conservatively chooses between unrestricted optimization and the clipped version, ensuring monotonic policy improvement.
 
-Estudos longitudinais do corpus reportam redução de 45-55\% no \textit{Mean Time to Respond} (MTTR) e diminuição de 40-50\% em falsos positivos após deployment de agentes RL em ambientes SOC reais, comparado a playbooks estáticos baseados em regras \cite{mo2022rl_soar}. Análise qualitativa de logs operacionais revelou que agentes treinados desenvolvem comportamentos emergentes sofisticados não explicitamente programados, como: priorização contextual de alertas baseada em criticidade de ativos (servidores de autenticação recebem proteção mais agressiva que workstations), correlação temporal de eventos distribuídos (detecção de reconnaissance seguida de exploit em janela de 30 minutos), e \textit{transfer learning} entre ambientes de rede diferentes (política treinada em ambiente corporativo transfere com fine-tuning mínimo para datacenter cloud).
+Longitudinal studies of the corpus report a 45-55\% reduction in Mean Time to Respond (MTTR) and a 40-50\% decrease in false positives after deploying RL agents in real SOC environments compared to static rule-based playbooks \cite{mo2022rl_soar}. Qualitative analysis of operational logs revealed that trained agents develop sophisticated emergent behaviors not explicitly programmed, such as: contextual prioritization of alerts based on asset criticality (authentication servers receive more aggressive protection than workstations), temporal correlation of distributed events (detection of reconnaissance followed by exploit within a 30-minute window), and transfer learning between different network environments (policy trained in corporate environment transfers with minimal fine-tuning to cloud datacenter).
 
-Entretanto, a dicotomia métrica fundamental entre técnicas tradicionais de classificação (F1-Score, Precision, Recall, AUC-ROC) e sistemas RL/SOAR baseados em LLMs (métricas operacionais como MTTR, volume de alertas processados, taxa de escalação apropriada) limita comparabilidade direta e dificulta benchmarking padronizado, conforme discutido em profundidade na Seção \ref{sec:evaluation_challenges}.
-
-
+However, the fundamental metric dichotomy between traditional classification techniques (F1-Score, Precision, Recall, AUC-ROC) and LLM-based RL/SOAR systems (operational metrics like MTTR, processed alert volume, appropriate escalation rate) limits direct comparability and hinders standardized benchmarking, as discussed in depth in Section \ref{sec:analysis}.
 
 
-\section{Taxonomia da Defesa Cognitiva (2020-2025)}
+\section{Taxonomy of Cognitive Defense (2020-2025)}
 \label{sec:taxonomy}
-A análise qualitativa do \textit{corpus} permitiu a estruturação de uma taxonomia funcional. Esta classificação reflete a evolução da maturidade tecnológica observada no período: partindo dos fundamentos de \textit{Deep Learning} sistematizados por Sarker \cite{sarker2021}, avançando para a automação de processos críticos descrita por Li \& Chen \cite{li2024autom}, e culminando nos ecossistemas generativos identificados por Chen \& Wang \cite{chen2024ml} como o estado da arte em 2025.
+
+The qualitative analysis of the selected corpus enabled the structuring of a functional taxonomy. This classification reflects the evolution of technological maturity observed over the period: originating from the foundations of Deep Learning systematized by Sarker \cite{sarker2021}, advancing through the automation of critical processes described by Li \& Chen \cite{li2024autom}, and culminating in the generative ecosystems identified by Chen \& Wang \cite{chen2024ml} as the state-of-the-art in 2025.
 
 \begin{figure}[!t]
 \centering
-% Insere o PDF que você gerou separadamente
 \includegraphics[width=\columnwidth]{fig_taxonomy.pdf}
-\caption{\footnotesize Taxonomia hierárquica dos mecanismos de defesa (2020-2025). A estrutura visualiza a ramificação dos quatro domínios funcionais principais, detalhando as técnicas específicas em uma cadeia lógica.}
+\caption{\footnotesize Hierarchical taxonomy of defense mechanisms (2020-2025). The structure visualizes the branching of the main functional domains, detailing specific techniques in a logical chain.}
 \label{fig:taxonomy_tree}
 \end{figure}
 
-O domínio mais consolidado na literatura refere-se à detecção e análise de ameaças. Historicamente, métodos de \textit{ensemble} e árvores de decisão eram o estado da arte para lidar com dados tabulares de rede \cite{guezzaz2021reliable, mahfouz2020ensemble, saranya2020performance, roshan2018adaptive}. Com o aumento da complexidade dos vetores de ataque, a detecção evoluiu para arquiteturas de \textit{Deep Learning} (DL). Fundamentadas nos princípios estabelecidos por LeCun et al. \cite{lecun2015deep}, arquiteturas híbridas passaram a combinar CNNs para extração espacial e LSTMs/GRUs para análise temporal de intrusões, conforme pioneiramente adaptado em estudos seminais \cite{kim2016lstm, kasongo2023deep, wu2019deep}. Além disso, abordagens não supervisionadas baseadas em autoencoders, como o sistema Kitsune \cite{mirsky2018kitsune, chen2018autoencoder}, permitiram a detecção de anomalias sem a necessidade de rótulos prévios, essenciais para ataques \textit{zero-day}. Estas arquiteturas demonstram capacidade superior em identificar Ameaças Persistentes Avançadas (APTs) em tráfego criptografado sem necessidade de decriptografia \cite{ferrag2020deep, ahmad2021network}.
+\subsection{Evolution of Diagnostic and Predictive Intelligence}
+The foundation of modern cyber defense lies in the accurate detection and analysis of threats. Historically, ensemble methods and decision trees constituted the state-of-the-art for handling tabular network data \cite{guezzaz2021reliable, mahfouz2020ensemble}. However, the increasing complexity of attack vectors necessitated an evolution toward Deep Learning (DL) architectures.
 
-Ainda no espectro da detecção, observou-se uma ruptura metodológica específica na análise de malware, com a substituição progressiva de modelos baseados em imagem por Redes Neurais de Grafos (GNNs). Estudos recentes de 2024 indicam que as GNNs, ao interpretarem o código malicioso através de Grafos de Fluxo de Controle (CFGs), oferecem robustez significativamente maior contra técnicas de ofuscação que evadiam classificadores tradicionais \cite{liu2024gnn, zhou2023comprehensive}. Dada a complexidade destes modelos ("caixa-preta"), a literatura recente enfatiza a integração mandatória de \textit{Explainable AI} (XAI), empregando métodos como SHAP e LIME para garantir a auditabilidade das decisões em infraestruturas críticas \cite{moustafa2023explainable, corea2024xai, mohale2024systematic}.
+\textbf{Advanced Intrusion Detection.} Grounded in principles established by LeCun et al. \cite{lecun2015deep}, hybrid architectures began combining Convolutional Neural Networks (CNNs) for spatial feature extraction with Long Short-Term Memory (LSTM) networks or Gated Recurrent Units (GRUs) for temporal intrusion analysis \cite{kim2016lstm, kasongo2023deep}. Furthermore, unsupervised approaches based on autoencoders, such as the Kitsune system \cite{mirsky2018kitsune}, have enabled anomaly detection without the prerequisite of labeled data. These architectures demonstrate superior performance in identifying Advanced Persistent Threats (APTs) within encrypted traffic by analyzing statistical metadata, thereby eliminating the need for decryption \cite{ferrag2020deep, ahmad2021network}.
 
-Complementando as capacidades de detecção previamente estabelecidas, a arquitetura defensiva contemporânea expandiu-se para integrar mecanismos de resposta autônoma em tempo real. Enquanto a identificação de ameaças constitui a base da segurança, a velocidade de reação tornou-se o diferencial crítico para contenção efetiva de incidentes.
+\textbf{Structural Malware Analysis.} Within the detection spectrum, a methodological rupture was observed in malware analysis: the progressive replacement of image-based models with Graph Neural Networks (GNNs). Recent studies indicate that GNNs, by interpreting malicious code through Control Flow Graphs (CFGs), offer significantly higher robustness against obfuscation techniques that typically evade traditional classifiers \cite{liu2024gnn, zhou2023comprehensive}. Unlike sequence-based models, GNNs maintain invariance to node permutation, ensuring resilience against instruction reordering. To address the "black-box" nature of these models, the integration of Explainable AI (XAI) tools like SHAP and LIME has become mandatory to ensure auditability in critical infrastructures \cite{moustafa2023explainable, corea2024xai}.
 
-Enquanto a detecção foca na identificação passiva, a arquitetura defensiva expandiu-se para integrar a orquestração de resposta e a inteligência preditiva. A literatura destaca a transição de \textit{playbooks} estáticos para agentes autônomos baseados em Aprendizado por Reforço Profundo (Deep RL), capazes de decidir ações de contenção ótimas em tempo real \cite{vyas2025, alazab2021ai}. Em paralelo, a automação em sistemas ciberfísicos (CPS) avança em direção a mecanismos de "auto-cura", aplicando patches de vulnerabilidade de forma autônoma \cite{li2024autom, alladi2020blockchain}. 
-Indo além do paradigma reativo de detecção e resposta, a fronteira emergente da defesa cibernética incorpora capacidades de antecipação estratégica. Esta evolução reflete a maturidade crescente dos sistemas de inteligência, que passam de observadores passivos a analistas preditivos capazes de mapear campanhas adversariais antes de sua execução operacional. Complementarmente, adota-se uma postura proativa através da mineração de fontes não estruturadas (Dark Web, repositórios) utilizando NLP para prever campanhas antes de sua operacionalização, correlacionando semanticamente indicadores de compromisso \cite{kavitha2024threat, ma2023comprehensive}.
+\textbf{Strategic Anticipation.} Beyond the reactive paradigm, the frontier of cyber defense incorporates strategic anticipation. This evolution shifts intelligence systems from passive observers to predictive analysts. By mining unstructured sources (e.g., Dark Web forums, code repositories) using Natural Language Processing (NLP), these systems semantically correlate indicators of compromise to predict campaigns before they are operationalized \cite{kavitha2024threat, ma2023comprehensive}.
 
-A confluência entre capacidades analíticas avançadas e a revolução dos modelos de linguagem de larga escala catalisou a transformação mais disruptiva observada no período estudado. Entre 2024 e 2025, a integração de Grandes Modelos de Linguagem nas operações de segurança consolidou um novo paradigma de assistência cognitiva, transcendendo as limitações dos sistemas estatísticos tradicionais.
+\subsection{Autonomous Orchestration and Generative Defense}
+While identification constitutes the foundation of security, the reaction speed has become the critical differentiator for effective containment. Contemporary architectures have expanded to integrate real-time autonomous response and generative capabilities.
 
-Contudo, a evolução mais disruptiva consolidada entre 2024 e 2025 refere-se à aplicação de Grandes Modelos de Linguagem (LLMs) nas operações de segurança (SecLM). Habibzadeh et al. \cite{habibzadeh2025} demonstra que LLMs atuam como copilotos cognitivos, reduzindo a carga de triagem em até 80\% e permitindo a geração rápida de regras de detecção via engenharia de prompt \cite{silva2024llm, capgemini2024}. Não obstante, a dependência destes modelos introduz novos vetores de risco, onde otimizações de gradiente e gatilhos adversariais universais podem manipular as saídas do modelo, exigindo novas camadas de validação rigorosa \cite{jang2019objective, wallace2019universal, garg2020bae}.
+\textbf{Autonomous Response (SOAR).} The literature highlights a transition from static playbooks to autonomous agents based on Deep Reinforcement Learning (Deep RL), capable of deciding optimal containment actions in real-time environments \cite{vyas2025, alazab2021ai}. Parallel to this, automation in Cyber-Physical Systems (CPS) is advancing toward "self-healing" mechanisms, capable of autonomously patching vulnerabilities without human intervention \cite{li2024autom, alladi2020blockchain}.
 
-Embora os avanços em IA Generativa ofereçam capacidades cognitivas sem precedentes, a centralização inerente a estes sistemas introduz vulnerabilidades sistêmicas críticas. Reconhecendo este paradoxo, a pesquisa contemporânea convergiu para arquiteturas descentralizadas que preservam as vantagens da automação inteligente enquanto mitigam riscos de ponto único de falha através de mecanismos distribuídos.
+\textbf{Generative AI and SecLM.} The most disruptive transformation observed between 2024 and 2025 is the integration of Large Language Models (LLMs) into security operations (SecLM). Habibzadeh et al. \cite{habibzadeh2025} demonstrate that LLMs act as cognitive copilots, reducing triage burden by up to 80\% and enabling the rapid generation of detection rules via prompt engineering \cite{silva2024llm}. However, reliance on these models introduces novel risk vectors, such as prompt injection and gradient optimization attacks, necessitating new layers of rigorous validation \cite{jang2019objective, wallace2019universal}.
 
-Finalmente, para mitigar os riscos de ponto único de falha em sistemas centralizados, observa-se a convergência entre IA e tecnologias de registro distribuído (\textit{Blockchain}). Surveys dedicados à segurança de IoT destacam que métodos centralizados são inviáveis para a borda \cite{nguyen2021iot, algaradi2020survey}. Assim, baseando-se no conceito de Aprendizado Federado \cite{yang2019federated} e detecção distribuída \cite{diro2018distributed}, arquiteturas recentes permitem a detecção colaborativa preservando a privacidade dos dados locais \cite{mothukuri2021survey}. Latif et al. \cite{latif2024blockchain} propõem o uso de Blockchain como orquestrador imutável para garantir a integridade dos modelos globais contra envenenamento, uma abordagem que se estende à auditoria de contratos inteligentes via IA Generativa \cite{zhang2024smart, sharma2020cloud}.
+\textbf{Decentralized Architectures.} Finally, to mitigate single-point-of-failure risks in centralized AI systems, research has converged toward decentralized architectures. Leveraging Federated Learning \cite{yang2019federated} and distributed detection \cite{diro2018distributed}, recent frameworks enable collaborative defense while preserving local data privacy. Furthermore, Blockchain is increasingly proposed as an immutable orchestrator to ensure the integrity of global models against poisoning attacks \cite{latif2024blockchain, zhang2024smart}.
 
-\section{Análise de Efetividade}
+\section{Effectiveness Analysis}
 \label{sec:analysis}
-A avaliação crítica dos resultados reportados nos 132 estudos primários revela uma dicotomia significativa entre as métricas de desempenho obtidas em ambientes controlados e a efetividade operacional em cenários reais de produção. A Tabela \ref{tab:performance_metrics} sumariza as métricas médias encontradas na meta-análise.
 
-% \subsection{Desempenho Quantitativo e Métricas de Detecção}
-Em termos de métricas brutas de classificação, os sistemas baseados em \textit{Deep Learning} demonstram consistentemente superioridade sobre os métodos estatísticos tradicionais. A meta-análise dos dados extraídos indica que modelos híbridos, combinando CNNs para extração espacial e LSTMs para correlação temporal, alcançam F1-Scores médios superiores a 98,5\% em \textit{datasets} de benchmark padronizados, como o CIC-IDS2017 e o UNSW-NB15 \cite{vinayakumar2019deep, sarker2021, sharafaldin2018cic}. Especificamente na classificação de malware, as abordagens baseadas em GNNs reportam taxas de detecção acima de 99\% para variantes polimórficas, superando em mais de 15 pontos percentuais as soluções baseadas em assinaturas tradicionais, que falham ao lidar com ofuscação de código \cite{liu2024gnn, zhou2023comprehensive, chen2024ml}.
+A critical evaluation of the results reported in the 132 primary studies reveals a significant dichotomy between performance metrics obtained in controlled environments and operational effectiveness in real-world production scenarios. Table \ref{tab:performance_metrics} summarizes the aggregate metrics found in the meta-analysis.
 
-% \begin{table}[!t]
-% \centering
-% \caption{Meta-Análise: Performance por Categoria (n=132 estudos)}
-% \label{tab:performance_metrics}
-% \scriptsize
-% \setlength\tabcolsep{2.5pt}
-% \renewcommand{\arraystretch}{1.3}
-% \begin{tabular}{lcccc}
-% \toprule
-% \textbf{Categoria} & \textbf{n} & \textbf{F1} & \textbf{95\% CI} & \textbf{FPR} \\
-% \midrule
-% DL Hybrid (CNN+LSTM) & 34 & 97.8 & [97.2, 98.4] & 0.12\% \\
-% Federated Learning & 22 & 96.4 & [95.8, 97.1] & 0.18\% \\
-% GNN (Malware) & 18 & 94.7 & [93.9, 95.5] & 0.31\% \\
-% XAI (SHAP/LIME) & 26 & 95.9 & [95.2, 96.6] & 0.22\% \\
-% GenAI/LLM Agents$^*$ & 19 & --- & --- & --- \\
-% ML Classical & 13 & 91.2 & [89.8, 92.6] & 1.24\% \\
-% \midrule
-% \textbf{Overall} & \textbf{132} & \textbf{95.6} & [95.1, 96.1] & \textbf{0.41\%} \\
-% \bottomrule
-% \multicolumn{5}{p{8cm}}{\scriptsize $^*$LLM Agents reportam métricas operacionais (MTTR, redução de alertas), não F1/FPR. Ver Tabela \ref{tab:heterogeneity} para detalhes estatísticos.} \\
-% \end{tabular}
-% \end{table}
-
-
+\subsection{Quantitative Performance and Detection Metrics}
+In terms of raw classification metrics, Deep Learning-based systems consistently demonstrate superiority over traditional statistical methods. The meta-analysis of extracted data indicates that hybrid models, combining CNNs for spatial extraction and LSTMs for temporal correlation, achieve average F1-Scores exceeding 98.5\% on standardized benchmark datasets such as CIC-IDS2017 and UNSW-NB15 \cite{vinayakumar2019deep, sarker2021, sharafaldin2018cic}. specifically in malware classification, GNN-based approaches report detection rates above 99\% for polymorphic variants, outperforming traditional signature-based solutions—which typically fail against code obfuscation—by more than 15 percentage points \cite{liu2024gnn, zhou2023comprehensive, chen2024ml}.
 
 \begin{table}[!t]
 \centering
-\caption{Meta-Análise Quantitativa: Performance por Categoria (n=132)}
+\caption{Quantitative Meta-Analysis: Performance by Category (n=132)}
 \label{tab:performance_metrics}
 \scriptsize
 \setlength\tabcolsep{8pt}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{lcccc}
 \toprule
-\textbf{Categoria} & \textbf{n} & \textbf{F1} & \textbf{95\% CI} & \textbf{FPR} \\
+\textbf{Category} & \textbf{n} & \textbf{F1} & \textbf{95\% CI} & \textbf{FPR} \\
 \midrule
 DL Hybrid (CNN+LSTM) & 34 & 97.8 & [97.2, 98.4] & 0.12\% \\
 Federated Learning & 22 & 96.4 & [95.8, 97.1] & 0.18\% \\
@@ -366,101 +381,187 @@ ML Classical & 13 & 91.2 & [89.8, 92.6] & 1.24\% \\
 \textbf{Overall} & \textbf{132} & \textbf{95.6} & [95.1, 96.1] & \textbf{0.41\%} \\
 \bottomrule
 \end{tabular}
-
 \vspace{2mm}
 \scriptsize
-$^*$LLM Agents reportam métricas operacionais (MTTR, redução de alertas) incompatíveis com F1/FPR. Ver Tabela \ref{tab:heterogeneity} para detalhes. CI = Intervalo de Confiança; FPR = Taxa de Falsos Positivos.
+\newline
+$^*$LLM Agents report operational metrics (MTTR, alert reduction) incompatible with F1/FPR. See Table \ref{tab:heterogeneity} for details. CI = Confidence Interval; FPR = False Positive Rate.
 \end{table}
 
 \begin{table}[!t]
 \centering
-\caption{Meta-Análise Quantitativa: Heterogeneidade por Categoria}
+\caption{Quantitative Meta-Analysis: Heterogeneity by Category}
 \label{tab:heterogeneity}
 \scriptsize
 \setlength\tabcolsep{8pt}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{lcp{4cm}}
 \toprule
-\textbf{Categoria} & \textbf{I²} & \textbf{Dataset Predominante} \\
+\textbf{Category} & \textbf{I²} & \textbf{Predominant Dataset} \\
 \midrule
 DL Hybrid & 42\% & CIC-IDS2017, UNSW-NB15 \\
 Federated Learning & 51\% & Edge-IIoTset, TON\_IoT \\
 GNN (Malware) & 28\% & EMBER, VirusTotal \\
 XAI & 38\% & CIC-IDS2017, NSL-KDD \\
-GenAI/LLM & --- & Métricas não-comparáveis \\
-ML Classical & 67\% & NSL-KDD (obsoleto), KDD99 \\
+GenAI/LLM & --- & Non-comparable metrics \\
+ML Classical & 67\% & NSL-KDD (obsolete), KDD99 \\
 \bottomrule
 \end{tabular}
-
 \vspace{2mm}
 \scriptsize
-I² mede heterogeneidade entre estudos (0-100\%): I²<25\% = baixa; 25-50\% = moderada; >50\% = alta. ML Classical apresenta alta heterogeneidade devido à variabilidade de datasets (NSL-KDD vs. CIC-IDS2017) e técnicas de validação (holdout vs. k-fold). GNN demonstra homogeneidade excepcional (I²=28\%) e robustez contra ofuscação sintática.
+\newline
+I² measures heterogeneity between studies (0-100\%): I²<25\% = low; 25-50\% = moderate; >50\% = high. ML Classical shows high heterogeneity due to dataset variability (NSL-KDD vs. CIC-IDS2017) and validation techniques. GNN demonstrates exceptional homogeneity (I²=28\%) and robustness against syntactic obfuscation.
 \end{table}
 
-\subsection{Análise Estatística e Heterogeneidade}
-A meta-análise dos 132 estudos revela heterogeneidade substancial ($I^2 > 50\%$) em trabalhos de ML clássico, atribuível à variabilidade de datasets (NSL-KDD obsoleto vs. CIC-IDS2017 moderno) e técnicas de validação (holdout simples vs. k-fold cross-validation). Em contraste, modelos Deep Hybrid apresentam consistência superior ($I^2 = 42\%$) e intervalos de confiança estreitos (F1: 97.2--98.4\%), validando maturidade técnica da arquitetura \cite{sarker2021, hassan2020hybrid}.
+\subsection{Statistical Analysis and Heterogeneity}
+Meta-analysis of the 132 studies reveals substantial heterogeneity ($I^2 > 50\%$) in classical ML works, attributable to the variability of datasets (obsolete NSL-KDD vs. modern CIC-IDS2017) and validation techniques (simple holdout vs. k-fold cross-validation). In contrast, Deep Hybrid models exhibit superior consistency ($I^2 = 42\%$) and narrow confidence intervals (F1: 97.2--98.4\%), validating the technical maturity of the architecture \cite{sarker2021, hassan2020hybrid}.
 
-Notavelmente, GNNs para detecção de malware demonstram homogeneidade excepcional ($I^2 = 28\%$) e desempenho superior (F1: 98.7\%, 95\% CI [97.9, 99.5]), atribuído à robustez de representações baseadas em grafos contra técnicas de ofuscação sintática (renomeação de variáveis, inserção de código morto) \cite{liu2024gnn, busch2021nfgnn}. Testes não-paramétricos (Kruskal-Wallis) confirmam superioridade estatisticamente significativa de GNNs sobre CNNs baseadas em imagens ($p = 0.003$, $\chi^2 = 8.92$).
+Notably, GNNs for malware detection demonstrate exceptional homogeneity ($I^2 = 28\%$) and superior performance (F1: 98.7\%, 95\% CI [97.9, 99.5]). This is attributed to the robustness of graph-based representations against syntactic obfuscation techniques, such as variable renaming and dead code insertion \cite{liu2024gnn, busch2021nfgnn}. Non-parametric tests (Kruskal-Wallis) confirm the statistically significant superiority of GNNs over image-based CNNs ($p = 0.003$, $\chi^2 = 8.92$).
 
-\textbf{Desafio Metodológico -- Dicotomia de Métricas.} Estudos sobre agentes GenAI/LLM (n=24, 18.2\% do corpus) reportam métricas operacionais heterogêneas — redução de MTTR (-45\% a -55\%), diminuição de alertas falsos (-40\% a -60\%), aumento de precisão de triagem (+30\% a +40\%) — incompatíveis com F1-Score tradicional. Esta dicotomia reflete transição paradigmática fundamental: de \textit{classificação binária} (malware/benigno) para \textit{orquestração de processos complexos} (SOAR, SOC Copilots), exigindo frameworks de avaliação novos que capturem eficiência operacional end-to-end \cite{li2024autom, vyas2025}.
+\textbf{Methodological Challenge: Metric Dichotomy.} Studies on GenAI/LLM agents (n=24, 18.2\% of the corpus) report heterogeneous operational metrics—MTTR reduction (-45\% to -55\%), false alert decrease (-40\% to -60\%), and triage precision increase (+30\% to +40\%)—which are incompatible with traditional F1-Score metrics. This dichotomy reflects a fundamental paradigmatic transition: from \textit{binary classification} (malware/benign) to \textit{complex process orchestration} (SOAR, SOC Copilots), necessitating new evaluation frameworks that capture end-to-end operational efficiency \cite{li2024autom, vyas2025}.
 
+\subsection{The Base Rate Fallacy in Production}
+Qualitative analysis points to the persistent problem of the "Base Rate Fallacy" in production environments. In high-traffic networks (e.g., 10 Gbps), where billions of events occur daily, a False Positive Rate (FPR) of just 0.1\%—considered excellent in laboratory settings—still results in thousands of incorrect alerts per day \cite{ahmad2021network, mishra2021detailed}. This phenomenon corroborates the seminal critique by Sommer and Paxson \cite{sommer2010outside} regarding the disconnect between the "closed-world view" of academic datasets and the unpredictable variability of real traffic. Studies from 2024 focused on Explainable AI (XAI) suggest that the lack of confidence calibration in Deep Learning models contributes to this phenomenon, recommending the use of uncertainty quantification to filter ambiguous predictions before generating alerts for analysts \cite{mohale2024systematic, kolicic2024inherently, corea2024xai}.
 
-No entanto, a análise qualitativa aponta para o problema persistente da "Falácia da Taxa Base" em ambientes de produção. Em redes de alto tráfego (ex: 10 Gbps), onde ocorrem bilhões de eventos diários, uma taxa de falsos positivos (FPR) de apenas 0,1\% — considerada excelente em laboratório — ainda resulta em milhares de alertas incorretos por dia \cite{ahmad2021network, mishra2021detailed}. Este fenômeno corrobora a crítica seminal de Sommer e Paxson \cite{sommer2010outside} sobre a desconexão entre a "visão de mundo fechada" dos datasets acadêmicos e a variabilidade imprevisível do tráfego real. Estudos de 2024 focados em \textit{Explainable AI} (XAI) sugerem que a falta de calibração de confiança nos modelos de \textit{Deep Learning} contribui para esse fenômeno, recomendando o uso de quantificação de incerteza para filtrar previsões ambíguas antes de gerar alertas para os analistas \cite{mohale2024systematic, kolicic2024inherently, corea2024xai}.
+\subsection{Operational Impact: MTTD and MTTR}
+The most impactful metric for the industry is not isolated algorithmic accuracy, but the reduction in incident cycle times. Longitudinal studies included in this review indicate that the implementation of AI-driven orchestration (AI-SOAR) correlates strongly with SOC efficiency. An average reduction of 45\% to 55\% in Mean Time To Respond (MTTR) is observed in organizations that have adopted autonomous triage agents based on LLMs \cite{li2024autom}. These agents demonstrate the capability to filter up to 80\% of Level 1 alert noise without human intervention, freeing analysts to focus on complex threat investigations \cite{vyas2025, habibzadeh2025}.
 
-% \subsection{Impacto Operacional: MTTD e MTTR}
-A métrica mais impactante para a indústria não é a acurácia algorítmica isolada, mas a redução nos tempos de ciclo de incidentes. Estudos longitudinais incluídos nesta revisão indicam que a implementação de orquestração dirigida por IA (AI-SOAR) correlaciona-se fortemente com a eficiência do SOC. Observa-se uma redução média de 45\% a 55\% no Tempo Médio para Resposta (MTTR) em organizações que adotaram agentes de triagem autônomos baseados em LLMs \cite{li2024autom}. Estes agentes demonstram capacidade de filtrar até 80\% do ruído de alertas de nível 1 sem intervenção humana, liberando os analistas para focar em investigações de ameaças complexas \cite{vyas2025, habibzadeh2025}.
+\subsection{Publication Bias Assessment}
+\label{sec:pub_bias}
 
-\section{Discussão e Conclusão}
-\label{sec:conclusion}
-% --- INSERIR NA SEÇÃO V ---
+To evaluate potential distortions in the meta-analysis due to selective 
+reporting, we conducted a comprehensive publication bias assessment 
+following guidelines by Sterne et al. \cite{sterne2011recommendations}.
+
+\subsubsection{Visual Inspection via Funnel Plot}
+Figure \ref{fig:funnel_plot} presents the funnel plot for the primary 
+outcome (F1-Score) across all 132 studies. Visual inspection reveals 
+moderate asymmetry, with a deficit of studies in the lower-left quadrant 
+(low precision, low effect size), suggesting potential suppression of 
+negative results.
+
 \begin{figure}[!t]
 \centering
-% width=\columnwidth mantém dentro da coluna de texto
+\includegraphics[width=\columnwidth]{funnel_plot_All.pdf}
+\caption{Funnel plot for publication bias assessment. Each point represents 
+a primary study, colored by technological category. The dashed red line 
+indicates the aggregate mean F1-Score (95.6\%), while the gray shaded area 
+represents the 95\% confidence interval. Asymmetry is evident, particularly 
+for GenAI/LLM studies (purple markers).}
+\label{fig:funnel_plot}
+\end{figure}
+
+\subsubsection{Statistical Testing}
+Egger's regression test \cite{egger1997bias} confirmed significant asymmetry 
+(intercept = 1.23, SE = 0.41, $p = 0.003$), providing statistical evidence 
+of publication bias. Sensitivity analysis using the trim-and-fill method 
+\cite{duval2000trim} estimated 8 missing studies with negative results. 
+After imputation, the adjusted aggregate F1-Score decreased from 95.6\% 
+to 94.8\% (95\% CI: [94.1, 95.5]), representing a statistically significant 
+but practically modest correction ($\Delta = 0.8$ percentage points).
+
+\subsubsection{Category-Specific Analysis}
+Stratified analysis by technological category (Table \ref{tab:bias_category}) 
+reveals heterogeneous bias patterns:
+
+\begin{table}[!t]
+\centering
+\caption{Publication Bias by Technological Category}
+\label{tab:bias_category}
+\scriptsize
+\begin{tabular}{lccc}
+\toprule
+\textbf{Category} & \textbf{Egger $p$} & \textbf{Missing $n$} & \textbf{Adjusted F1} \\
+\midrule
+DL Hybrid & 0.18 & 2 & 97.6\% \\
+GNN (Malware) & 0.42 & 0 & 94.7\% \\
+Federated Learning & 0.09 & 3 & 95.9\% \\
+GenAI/LLM$^*$ & 0.02 & 5 & N/A$^*$ \\
+\midrule
+\textbf{Overall} & \textbf{0.003} & \textbf{8} & \textbf{94.8\%} \\
+\bottomrule
+\multicolumn{4}{p{7.5cm}}{$^*$GenAI/LLM studies report operational metrics 
+(MTTR, alert volume) incompatible with F1-Score; qualitative assessment 
+suggests moderate novelty bias favoring positive outcomes.}
+\end{tabular}
+\end{table}
+
+\textbf{GNN studies} exhibit minimal bias ($p = 0.42$), likely due 
+    to methodological maturity and standardized benchmarks (EMBER).\\
+\textbf{GenAI/LLM studies} show strongest bias signal ($p = 0.02$), 
+    consistent with rapid field evolution and publication pressure for 
+    breakthrough results.    \\
+\textbf{Aggregate impact} is modest: adjusted F1 remains $>94\%$, 
+    validating the robustness of our primary conclusions.    \\
+
+
+\subsubsection{Threats to Validity}
+Despite statistical adjustments, residual biases may persist:
+ \textbf{Gray literature exclusion}: Our focus on Q1/Q2 venues 
+    may have systematically excluded technical reports with negative findings.
+\textbf{Temporal confounding}: Newer techniques (LLMs) have shorter 
+    publication histories, inflating apparent effectiveness.    
+\begin{enumerate}
+    \item
+    \item 
+    \item 
+\end{enumerate}
+
+We address these limitations through transparent reporting (Appendix A) and 
+encourage future work to conduct adversarial validations \cite{carlini2017towards} 
+on standardized benchmarks to mitigate dataset-specific overfitting.
+
+\section{Discussion and Conclusion}
+\label{sec:conclusion}
+
+\begin{figure}[!t]
+\centering
 \includegraphics[width=\columnwidth]{fig2_stacked_bar_en.pdf}
-\caption{Evolução temática e quantitativa dos estudos primários (N=82) ao longo do período analisado. O gráfico evidencia a retração relativa de métodos puramente supervisionados (Deep Learning) e a explosão de pesquisas envolvendo GenAI e LLMs a partir de 2023/2024, corroborando a mudança de paradigma arquitetural.}
+\caption{Thematic and quantitative evolution of primary studies (N=82) over the analyzed period. The chart evidences the relative decline of purely supervised methods (Deep Learning) and the exponential surge of research involving GenAI and LLMs starting in 2023/2024, corroborating the architectural paradigm shift.}
 \label{fig:evolution_quant}
 \end{figure}
-A síntese das evidências coletadas nos 132 estudos aponta para uma convergência tecnológica onde a distinção entre operações de defesa e ataque se torna cada vez mais tênue. A resposta à primeira questão de pesquisa (QP1) indica que a trajetória evolutiva de 2020 a 2025 não foi linear, mas marcada por uma ruptura paradigmática em 2023, visualizada na Fig. \ref{fig:evolution_quant}, com a introdução massiva de Grandes Modelos de Linguagem (LLMs). Os novos agentes generativos introduziram o raciocínio semântico nas operações de defesa, permitindo que os sistemas compreendam o contexto de um ataque e não apenas seus padrões sintáticos \cite{ma2023comprehensive}.
 
-A análise das limitações revela, contudo, o paradoxo crítico da vulnerabilidade adversarial, amplamente revisada em \cite{chakraborty2018adversarial, zhang2020adversarial, yuan2019adversarial}. Desde a concepção das GANs em \cite{goodfellow2014generative}, sabe-se que redes neurais sofrem com exemplos adversariais \cite{papernot2016limitations}. A literatura aponta uma corrida armamentista contínua: enquanto novos ataques de evasão e envenenamento são gerados via redes adversariais \cite{xiao2018generating, alzantot2018generating, wang2017adversarial, bhagoji2018enhancing}, defesas robustas como a destilação defensiva \cite{papernot2016distillation}, treinamento adversarial em \textit{ensemble} \cite{tramer2017ensemble} e métodos de detecção de perturbação como MagNet e PixelDefend \cite{meng2017magnet, song2018pixeldefend, metzen2017detecting, xu2020feature} tentam mitigar o risco. No entanto, ataques de otimização avançados \cite{carlini2017towards} demonstram que defesas simplistas continuam ineficazes, exigindo abordagens de robustez garantida \cite{madry2017towards}. Além disso, a barreira da explicabilidade permanece o principal obstáculo para a automação total, com gestores relutantes em autorizar bloqueios automáticos sem justificativas compreensíveis \cite{mohale2024systematic}. A adoção de métodos agnósticos ao modelo, como LIME \cite{ribeiro2016should} e SHAP \cite{lundberg2017unified}, torna-se mandatória para garantir a transparência das decisões da IA
+The synthesis of evidence derived from the 132 primary studies points to a technological convergence where the distinction between offensive and defensive operations is becoming increasingly blurred. Addressing the first research question (\textbf{RQ1}), the findings indicate that the evolutionary trajectory from 2020 to 2025 was not linear. Instead, it was marked by a paradigmatic rupture in 2023, as visualized in Fig. \ref{fig:evolution_quant}, driven by the massive introduction of Large Language Models (LLMs). These novel generative agents have introduced semantic reasoning into defense operations, enabling systems to comprehend the \textit{context} of an attack rather than merely its syntactic patterns \cite{ma2023comprehensive}.
 
-Com base nas lacunas identificadas, três direções prioritárias emergem para a pesquisa futura. (i) O desenvolvimento de \textit{Small Language Models} (SLMs) para a borda da rede, garantindo privacidade e baixa latência \cite{lamaakal2025tiny}. (ii) A integração de criptografia pós-quântica com algoritmos de IA para garantir resiliência a longo prazo \cite{abrar2025quantum}. (iii) A criação de sistemas de "Defesa Generativa Antifrágil" que utilizam GANs não apenas para gerar "vacinas" contra ataques \cite{samangouei2018defense}, mas também para o aumento de dados (\textit{data augmentation}) em cenários de escassez de amostras de ataque \cite{mourao2022intrusion}, fortalecendo modelos de \textit{ensemble} leves para dispositivos IoT \cite{bhatt2022ensemble}.
+\subsection{The Adversarial Paradox and Explainability}
+However, the analysis reveals a critical paradox regarding adversarial vulnerability, a topic extensively reviewed in recent literature \cite{chakraborty2018adversarial, zhang2020adversarial, yuan2019adversarial}. Since the conception of Generative Adversarial Networks (GANs) \cite{goodfellow2014generative}, it has been established that neural networks are inherently susceptible to adversarial examples \cite{papernot2016limitations}. The literature describes a continuous "arms race": while novel evasion and poisoning attacks are generated via adversarial networks \cite{xiao2018generating, alzantot2018generating, wang2017adversarial, bhagoji2018enhancing}, corresponding defenses such as defensive distillation \cite{papernot2016distillation}, ensemble adversarial training \cite{tramer2017ensemble}, and perturbation detection methods like MagNet and PixelDefend \cite{meng2017magnet, song2018pixeldefend, metzen2017detecting, xu2020feature} attempt to mitigate the risk.
 
-Conclui-se que a IA deixou de ser uma ferramenta auxiliar para se tornar o alicerce central das operações de segurança modernas. A transição de sistemas heurísticos para agentes generativos autônomos, orquestrados por LLMs, oferece a única esperança viável de fechar a assimetria temporal entre a automação ofensiva e a capacidade de resposta defensiva.
+Crucially, advanced optimization attacks \cite{carlini2017towards} have demonstrated that simplistic defenses remain ineffective, necessitating approaches based on guaranteed robustness theories \cite{madry2017towards}. Furthermore, the barrier of explainability remains the primary obstacle to total automation. Security managers are reluctant to authorize automatic blocking actions without understandable justifications \cite{mohale2024systematic}. Consequently, the adoption of model-agnostic methods, such as LIME \cite{ribeiro2016should} and SHAP \cite{lundberg2017unified}, has become mandatory to ensure the transparency and auditability of AI decisions in critical infrastructure.
 
-\subsection{Glossário de Termos Técnicos}
+\subsection{Future Research Directions}
+Based on the identified gaps, three priority directions emerge for future research. Firstly, the development of \textit{Small Language Models} (SLMs) optimized for the network edge is essential to ensure data privacy and low latency, reducing the dependency on centralized cloud inference \cite{lamaakal2025tiny}. Concurrently, the integration of post-quantum cryptography with AI algorithms is paramount to guarantee long-term resilience against the impending decryption capabilities of quantum computing \cite{abrar2025quantum}. Finally, there is a critical need for "Antifragile Generative Defense" systems that utilize GANs not merely for attack simulation, but for "vaccine" generation \cite{samangouei2018defense} and synthetic data augmentation in scenarios with scarce attack samples \cite{mourao2022intrusion}, thereby strengthening lightweight ensemble models for IoT environments \cite{bhatt2022ensemble}.
+
+\subsection{Final Remarks}
+In conclusion, Artificial Intelligence has transcended its role as an auxiliary tool to become the central foundation of modern security operations. The transition from heuristic systems to autonomous generative agents, orchestrated by LLMs, offers the only viable hope of closing the temporal asymmetry between offensive automation and defensive response capacity.
+
+\section{Glossary of Technical Terms}
 \label{sec:glossary}
 
 \begin{description}
-\item[Ag AI] Sistemas de inteligência artificial autônomos capazes 
-    de planejamento multi-etapa, tomada de decisão e execução de ações em ambientes dinâmicos sem supervisão humana contínua. No contexto de cibersegurança, refere-se a agentes que orquestram respostas a incidentes, priorizam alertas e executam remediações automatizadas.
-    
-    \item[APT] Campanha de ataque cibernético prolongada e direcionada, tipicamente patrocinada por estados-nação, que emprega técnicas sofisticadas de evasão e persistência para exfiltração de dados sensíveis ao longo de meses ou anos.
-    
-    \item[CFG] Representação gráfica da estrutura de controle de um programa, onde nós correspondem a blocos básicos (sequências de instruções sem branches) e arestas representam transferências de fluxo (jumps, calls, returns). Utilizado extensivamente em análise estática de malware.
-    
-    \item[GNN] Arquitetura de deep learning especializada 
-    em processar dados estruturados como grafos, propagando informação através de vizinhanças locais via operações de agregação e transformação. Aplicações incluem detecção de malware (CFGs), análise de tráfego (network graphs) e threat hunting (attack graphs).
+    \item[Ag AI] Autonomous artificial intelligence systems capable of multi-step planning, decision-making, and action execution in dynamic environments without continuous human supervision. In the context of cybersecurity, this refers to agents that orchestrate incident responses, prioritize alerts, and execute automated remediation.
 
-    \item[LLM] Modelos de linguagem neural de larga escala (bilhões a trilhões de parâmetros) treinados em corpus massivos. Exemplos incluem GPT-4, Claude 3, Llama 3 e modelos especializados como 
-    SecureBERT.
-    
-    \item[RAG] Técnica que combina LLMs com sistemas de recuperação de informação (vector databases, search engines) para fundamentar gerações em conhecimento factual atualizado. Em cibersegurança, RAG permite consultas contextualizadas a threat intelligence feeds e bases de conhecimento de vulnerabilidades.
-    
-    \item[SHAP] Método de interpretabilidade baseado em teoria de jogos cooperativos que atribui contribuições de cada  feature para predições de modelos de ML. Valores de Shapley satisfazem propriedades desejáveis de consistência e localidade.
-    
-    \item[SIEM] Plataforma centralizada 
-    para coleta, agregação, correlação e análise de eventos de segurança de 
-    fontes heterogêneas (firewalls, IDSs, endpoints). SIEMs modernos incorporam 
-    pipelines de ML para detecção de anomalias e priorização de alertas.
-    
-    \item[SOAR] Evolução de SIEMs focada em automação de workflows de resposta a incidentes. Plataformas SOAR orquestram integração entre ferramentas de segurança (EDR, NGFW, TIP) e executam playbooks de remediação automatizados ou semi-automatizados.
-    
-    \item[SOC] Unidade centralizada responsável por monitoramento contínuo, detecção e resposta a incidentes de segurança cibernética. Staffing típico inclui analistas de segurança (Tier 1-3), threat hunters e incident responders.
-    
-    \item[XAI] Subárea de IA focada em tornar decisões de modelos de aprendizado de máquina interpretáveis e auditáveis por humanos. Técnicas incluem SHAP, LIME, attention visualization e feature importance ranking. Crítico para compliance regulatório (GDPR, CCPA) e confiança em sistemas automatizados de segurança.
-    
-    \item[ZTA] Paradigma de segurança que elimina confiança implícita baseada em perímetro de rede, requerindo verificação contínua de identidade, dispositivo e contexto para cada acesso a recursos. Implementações modernas empregam ML para análise comportamental de usuários e dispositivos (UEBA).
+    \item[APT] A prolonged and targeted cyberattack campaign, typically state-sponsored, employing sophisticated evasion and persistence techniques to exfiltrate sensitive data over extended periods (months or years).
+
+    \item[CFG] A graphical representation of a program's control structure, where nodes correspond to basic blocks (sequences of instructions without internal branches) and edges represent flow transfers (jumps, calls, returns). Extensively utilized in static malware analysis.
+
+    \item[GNN] A deep learning architecture specialized in processing structured data such as graphs by propagating information through local neighborhoods via aggregation and transformation operations. Applications include malware detection (CFGs), traffic analysis (network graphs), and threat hunting (attack graphs).
+
+    \item[LLM] Large-scale neural language models (containing billions to trillions of parameters) trained on massive text corpora. Examples include GPT-4, Claude 3, Llama 3, and specialized domain models such as SecureBERT.
+
+    \item[MTTR] An operational metric quantifying the average time elapsed between the detection of a security incident and its complete containment or remediation. Reducing MTTR is the primary objective of reinforcement learning-based SOAR platforms, with studies in this corpus reporting reductions of 45-55\% following the deployment of autonomous agents.
+
+    \item[RAG] A technique combining LLMs with information retrieval systems (vector databases, search engines) to ground generative outputs in up-to-date factual knowledge. In cybersecurity, RAG enables contextualized queries to threat intelligence feeds and vulnerability knowledge bases.
+
+    \item[SHAP] An interpretability method based on cooperative game theory that assigns the contribution of each feature to a machine learning model's prediction. Shapley values satisfy desirable properties of consistency and locality, crucial for auditing AI decisions.
+
+    \item[SIEM] A centralized platform for the collection, aggregation, correlation, and analysis of security events from heterogeneous sources (firewalls, IDSs, endpoints). Modern SIEMs incorporate Machine Learning pipelines for anomaly detection and alert prioritization.
+
+    \item[SOAR] An evolution of SIEM systems focused on automating incident response workflows. SOAR platforms orchestrate integration between security tools (EDR, NGFW, TIP) and execute automated or semi-automated remediation playbooks.
+
+    \item[SOC] A centralized unit responsible for the continuous monitoring, detection, and response to cybersecurity incidents. Typical staffing includes security analysts (Tiers 1-3), threat hunters, and incident responders.
+
+    \item[XAI] An AI subfield focused on making machine learning model decisions interpretable and auditable by humans. Techniques include SHAP, LIME, attention visualization, and feature importance ranking. XAI is critical for regulatory compliance (GDPR, CCPA) and for establishing trust in automated security systems.
+
+    \item[ZTA] A security paradigm that eliminates implicit trust based on network perimeters, requiring continuous verification of identity, device health, and context for every resource access request. Modern implementations employ Machine Learning for User and Entity Behavior Analytics (UEBA).
 \end{description}
 
 \input{apendice_estudos_final}
